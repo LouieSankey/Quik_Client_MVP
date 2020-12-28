@@ -1,0 +1,25 @@
+.potentialName {
+    margin-bottom: 0px;
+}
+
+.potentialAge {
+    margin-top: 0px;
+}
+
+.result-img {
+    float: left;
+    padding-right: 8px;
+}
+
+.result-container {
+    display: flex;
+    clear: both;
+    border: solid;
+    border-width: 1px;
+    border-color: lightgray;
+}
+
+.result-box {
+    /* display: inline; */
+    float: left;
+}

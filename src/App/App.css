@@ -1,0 +1,475 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body,
+div,
+form,
+input,
+select,
+textarea,
+p {
+    padding: 0;
+    margin: 0;
+    outline: none;
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 14px;
+    color: #666;
+    line-height: 22px;
+}
+
+.modal-heartpin {
+    width: 40px;
+}
+
+.logo-main-text {
+    margin: 10;
+    font-size: 32px;
+    color: #fff;
+    z-index: 2;
+}
+
+.react-date-picker__inputGroup__input {
+    color: black;
+}
+
+
+/* styles the date picker */
+
+.react-date-picker__calendar,
+.react-calendar {
+    width: 300px !important;
+    border-radius: 10px;
+}
+
+.react-date-picker {
+    display: block !important;
+    margin-top: 4px;
+}
+
+.react-date-picker__button {
+    opacity: 0.5;
+}
+
+.leaflet-popup-content-wrapper {
+    width: 240px;
+}
+
+.date-location-header {
+    margin-bottom: 8px !important;
+}
+
+.date-location {
+    margin: 0px;
+    font-size: 22px;
+}
+
+.date-address {
+    margin-top: 6px;
+    font-size: 12px;
+}
+
+.react-date-picker__wrapper {
+    border-radius: 3px;
+    border: thin solid #ccc !important;
+}
+
+.leaflet-popup-close-button {
+    padding: 6px;
+}
+
+.leaflet-marker-icon:hover {}
+
+
+/* styles two coloum layout */
+
+.header-column-1 {
+    flex: .5;
+}
+
+.header-column-2 {
+    flex: 2;
+}
+
+.header-column-3 {
+    flex: .7;
+}
+
+.column-1 {
+    float: left;
+    width: 60%;
+}
+
+
+/* .column-2-inner {
+    box-shadow: #666666 0 1px 4px 2px;
+    position: relative;
+} */
+
+.column-2 {
+    float: left;
+    width: 40%;
+}
+
+.scrollable {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: calc(100vh - 190px);
+}
+
+.header-text {
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+
+/* Clear floats after the columns */
+
+.row {
+    clear: both;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.navbar {
+    height: 50px;
+    background-color: rgb(156, 54, 114);
+    display: flex;
+}
+
+.logo-image {
+    position: relative;
+    margin-right: -4px;
+    margin-top: -8px;
+    transform: rotate(-15deg);
+    width: 44px;
+    height: 44px;
+    float: left;
+}
+
+.bars {
+    width: 18px;
+    height: 18px;
+}
+
+.potential-matches-header {
+    margin-top: 0px;
+    margin-bottom: 6px;
+}
+
+.logo-text {
+    /* font-family: 'Gloria Hallelujah', cursive; */
+    font-family: 'Archivo Narrow', sans-serif;
+    margin-left: 14px;
+    margin-top: 15px;
+}
+
+.float-left {
+    /* display: inline; */
+    float: left;
+    margin: 12px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.like-button {
+    height: 40px;
+    width: auto;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+
+/* .tagline-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    display: inline-block;
+} */
+
+.my-quik {
+    float: right;
+    color: white;
+    margin-right: 30px;
+    cursor: pointer;
+}
+
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgba(211, 211, 211, 0.5);
+    opacity: 1;
+    /* Firefox */
+}
+
+ :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: rgba(211, 211, 211, 0.5);
+}
+
+ ::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: rgba(211, 211, 211, 0.5);
+}
+
+.navbar-2 {
+    height: 48px;
+    border: solid;
+    border-width: 1px;
+}
+
+.map {
+    width: 100%;
+    height: calc(100vh - 100px);
+    position: relative;
+    outline: none;
+    /* position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%; */
+}
+
+.leaflet-interactive {
+    /* stroke: #004a8f;
+    fill: #004a8f;
+    width: 200px; */
+}
+
+.testbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    padding: 20px;
+}
+
+form {
+    width: 100%;
+    padding: 20px;
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 0 0 20px 0 #a82877;
+}
+
+.banner {
+    position: relative;
+    height: 210px;
+    background-image: url("/uploads/media/default/0001/02/8ca4045044162379597641472fa0bb5489ba418f.jpeg");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.banner::after {
+    content: "";
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+input,
+textarea,
+select {
+    margin-bottom: 6px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+input {
+    padding: 5px;
+}
+
+select {
+    width: 100%;
+    padding: 7px 0;
+    background: transparent;
+}
+
+textarea {
+    width: calc(100% - 12px);
+    padding: 5px;
+}
+
+.item {
+    position: relative;
+    margin: 10px 0;
+}
+
+input[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+.item i,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    font-size: 20px;
+    color: #a9a9a9;
+}
+
+.item i {
+    right: 1%;
+    top: 30px;
+    z-index: 1;
+}
+
+[type="date"]::-webkit-calendar-picker-indicator {
+    right: 0;
+    z-index: 2;
+    opacity: 0;
+    cursor: pointer;
+}
+
+#timeblocks {
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+input[type="time"]::-webkit-inner-spin-button {
+    margin: 2px 22px 0 0;
+}
+
+input[type=radio],
+input.other {
+    display: none;
+}
+
+label.radio {
+    position: relative;
+    display: inline-block;
+    margin: 5px 20px 10px 0;
+    cursor: pointer;
+}
+
+.question span {
+    margin-left: 30px;
+}
+
+label.radio:before {
+    content: "";
+    position: relative;
+    top: 2px;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+}
+
+#radio_5:checked~input.other {
+    display: block;
+}
+
+input[type=radio]:checked+label.radio:before {
+    border: 2px solid #a82877;
+    background: #a82877;
+}
+
+label.radio:after {
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: 5px;
+    width: 7px;
+    height: 4px;
+    border: 3px solid #fff;
+    border-top: none;
+    border-right: none;
+    transform: rotate(-45deg);
+    opacity: 0;
+}
+
+input[type=radio]:checked+label:after {
+    opacity: 1;
+}
+
+.btn-block {
+    margin-top: 10px;
+    text-align: center;
+}
+
+#pinButton {
+    width: 100px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #a82877;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.react-date-picker__clear-button {
+    display: none;
+}
+
+.react-date-picker {
+    display: block;
+}
+
+#pinButton:hover {
+    background: #bf1e81;
+}
+
+@media (min-width: 568px) {
+    .name-item,
+    .city-item {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .name-item input,
+    .city-item input {
+        width: calc(50% - 20px);
+    }
+    .city-item select {
+        width: calc(50% - 8px);
+    }
+}
+
+.potentials {
+    display: none;
+}
+
+@media (max-width: 700px) {
+    .map {
+        height: calc(100vh - 100px);
+        /* position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%; */
+    }
+    .column-1 {
+        float: left;
+        width: 100%;
+    }
+    /* .column-2-inner {
+        box-shadow: #666666 0 1px 4px 2px;
+        position: relative;
+    } */
+    .column-2 {
+        display: none;
+    }
+    .header-column-2 {
+        flex: none;
+        width: 75%;
+        margin-right: 10px;
+    }
+    .potentials {
+        display: inline;
+    }
+    .logo-main-text,
+    .my-quik {
+        display: none;
+    }
+    h2 {
+        font-size: 16px;
+    }
+}

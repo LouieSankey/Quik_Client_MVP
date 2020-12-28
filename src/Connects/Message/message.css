@@ -1,0 +1,99 @@
+
+
+/* default message is sent message */
+.message-data {
+    margin-bottom: 15px;
+}
+
+.message-data-time {
+    color: lighten(gray, 8%);
+    padding-left: 6px;
+}
+
+.message {
+    color: white;
+    padding: 18px 20px;
+    line-height: 26px;
+    font-size: 16px;
+    border-radius: 7px;
+    margin-bottom: 30px;
+    width: 90%;
+    position: relative;
+    background: blue;
+}
+
+.message:after {
+    bottom: 100%;
+    left: 7%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-bottom-color: blue;
+    border-width: 10px;
+    margin-left: -10px;
+}
+
+.my-message {
+    background: #aa4985;
+}
+
+.other-message {
+    background: blue;
+    ;
+}
+
+.other-message:after {
+    border-bottom-color: blue;
+    ;
+    left: 93%;
+}
+
+/* recieved message */
+
+/* system messages */
+
+.message-system {
+    color: white;
+    padding: 18px 20px;
+    line-height: 26px;
+    font-size: 16px;
+    border-radius: 7px;
+    margin-bottom: 30px;
+    width: 70%;
+    position: relative;
+    background: blue;
+    margin:0 auto;
+}
+
+.message-system:after {
+    bottom: 100%;
+    left: 7%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  
+    border-width: 10px;
+    margin-left: -10px;
+
+ 
+}
+
+.my-message-system {
+    background: #aa4985;
+}
+
+
+
+.message-data-system {
+    width:70%;
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+
+
