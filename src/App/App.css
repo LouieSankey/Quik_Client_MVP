@@ -38,9 +38,41 @@ p {
 
 /* styles the date picker */
 
+.red-flag {
+    display: none;
+    width: 20px;
+}
+
+.report-location {
+    float: right;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+    font-size: 10px;
+    padding: 0px;
+}
+
+.calendar__tile {
+    padding: 6px;
+}
+
+.react-date-picker__button svg {
+    border-radius: 6px;
+}
+
+.react-calendar__navigation {
+    margin-bottom: 0px;
+}
+
+.react-calendar__navigation button {
+    min-width: unset;
+}
+
 .react-date-picker__calendar,
 .react-calendar {
-    width: 300px !important;
+    width: 200px !important;
     border-radius: 10px;
 }
 
@@ -141,13 +173,14 @@ p {
     height: 50px;
     background-color: rgb(156, 54, 114);
     display: flex;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .logo-image {
     position: relative;
-    margin-right: -4px;
     margin-top: -8px;
-    transform: rotate(-15deg);
+    transform: rotate(-5deg);
     width: 44px;
     height: 44px;
     float: left;
@@ -224,7 +257,7 @@ p {
 
 .map {
     width: 100%;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 130px);
     position: relative;
     outline: none;
     /* position: absolute;

@@ -9,24 +9,50 @@ export default function Message(props) {
 <>
         
             {props.message.sent &&
+            <>
             <li className="clearfix">
                 <div className="message-data align-right">
+
                     <span className="message-data-time">00:00 AM, Today</span> &nbsp; &nbsp;
-                    <span className="message-data-name">You</span> <i className="fa fa-circle me"></i>
+
+                    {/* <span className="message-data-name">You</span> <i className="fa fa-circle me"></i> */}
 
                 </div>
+                <img className="profile-image-chat float-right" src={require('../../Images/man-5.png')} alt=""/>
+
                 <div className="message other-message float-right">
+
                     {props.message.sent} </div>
             </li> 
+
+                <li className="clearfix">
+                <div className="message-data">
+
+                    {/* <span className="message-data-name"><i className="fa fa-circle online"></i> {props.activeUser.name}</span> */}
+                    <span className="message-data-time">00:00 AM, Today</span>
+
+                </div>
+
+                <img className="connection-image-chat" src={props.activeUser.profileImage} alt=""/>
+
+                <div className="message my-message">
+                    Hmm, Ok. 
+                    
+                </div>
+                </li>
+                </>
             }           
             {props.message.recieved &&
               <li>
                 <div className="message-data">
+
                     <span className="message-data-name"><i className="fa fa-circle online"></i> {props.activeUser.name}</span>
                     <span className="message-data-time">00:00 AM, Today</span>
+
                 </div>
                 <div className="message my-message">
                     Hmm, Ok. 
+                    
                 </div>
             </li>
             }

@@ -1,7 +1,7 @@
     .container {
         margin: 0 auto;
         width: 100%;
-        background: #444753;
+        background: lightslategray;
         border-radius: 5px;
     }
     
@@ -102,7 +102,6 @@
     }
     
     .chat-history {
-        padding: 30px 30px 20px;
         border-bottom: 2px solid white;
         overflow-y: scroll;
         height: 170px;
@@ -115,7 +114,7 @@
     .chat-selection-header {
         color: rgb(167, 167, 167);
         margin: 10px;
-        font-size: 18px;
+        font-size: 16px;
     }
     
     textarea {
@@ -217,15 +216,17 @@
     
     .connection-profile {
         padding-bottom: 0px;
+        border-radius: 10px;
     }
     
     .connection-profile:hover {
-        background-color: darkgray;
+        background-color: lightsteelblue;
         cursor: pointer;
     }
     
     .connection-image {
         padding: 3px;
+        height: 100px;
     }
     
     .chat-message-list {
@@ -233,7 +234,7 @@
     }
     
     .selectedItem {
-        border: solid darkgray;
+        border: solid lightsteelblue;
     }
     
     @media (max-width: 700px) {

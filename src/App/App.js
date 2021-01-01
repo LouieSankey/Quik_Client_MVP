@@ -9,6 +9,8 @@ import SearchBar from '../SearchBar/search-bar'
 import NavBar from '../NavBar/nav-bar'
 import 'leaflet/dist/leaflet.css';
 import './App.css';
+import Landing from '../landingPage'
+
 
 import { createBrowserHistory } from "history";
 
@@ -16,6 +18,7 @@ const history = createBrowserHistory();
 const man1 = require('../Images/man-1.png')
 const man2 = require('../Images/man-2.png')
 const man3 = require('../Images/man-3.png')
+const man4 = require('../Images/man-4.png')
 
 //connection status codes
 // 'like' button = status code 0
@@ -26,32 +29,32 @@ const man3 = require('../Images/man-3.png')
 const exampleMatches = [
   {
     id: 1,
-    name: "James",
+    name: "Lisa",
     age: "44",
     connectedStatus: 0,
     profileImage: man1
   },
   {
     id: 2,
-    name: "Tom",
+    name: "Anna",
     age: "32",
     connectedStatus: 1,
     profileImage: man2
   },
   {
     id: 3,
-    name: "Jon",
+    name: "Jill",
     age: "24",
     connectedStatus: 1,
     profileImage: man3
   },
-  // {
-  //   id: 4,
-  //   name: "Bo",
-  //   age: "22",
-  //   connectedStatus: 1,
-  //   profileImage: man1
-  // },
+  {
+    id: 4,
+    name: "Lynn",
+    age: "22",
+    connectedStatus: 1,
+    profileImage: man4
+  },
   // {
   //   id: 5,
   //   name: "Ron",
@@ -91,7 +94,7 @@ export default function App(props) {
 
 
   const [pinnedLocationIds, setpinnedLocationIds] = useState(new Set([]));
-  const [pinsRemaining, setPinsRemaining] = useState(5)
+  const [pinsRemaining, setPinsRemaining] = useState(2)
   const [mapCenter, setMapCenter] = React.useState([37.77400521704548, -122.43092782795432]);
   const [mapZoom, setMapZoom] = React.useState(13);
   const [matches, setMatches] = useState(exampleMatches)
@@ -137,8 +140,12 @@ export default function App(props) {
     }
   }
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
 
   return (    
+  <>
+  {isLoggedIn ? 
   <>
     <SearchBar onLocationChange={onLocationChange}></SearchBar>
     <NavBar></NavBar>
@@ -177,10 +184,14 @@ export default function App(props) {
           <Route path="/connects">
             <Connects matches={matches} recentMatchId={recentMatchId}/>
           </Route>
-
-
           <Route path="/profile" component={ Profile }/>
         </Switch>
+        </>
+        :
+        <Route exact path="/quik">
+        <Landing setIsLoggedIn={() => setIsLoggedIn} ></Landing>
+        </Route>
+       }
   </>
   );
 }

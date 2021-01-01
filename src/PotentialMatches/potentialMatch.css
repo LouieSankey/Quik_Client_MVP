@@ -9,6 +9,7 @@
 .result-img {
     float: left;
     padding-right: 8px;
+    height: 150px;
 }
 
 .result-container {

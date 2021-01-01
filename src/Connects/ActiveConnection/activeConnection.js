@@ -1,7 +1,7 @@
 import React, { Component, useState,  useEffect, useRef } from 'react';
 import Message from '../Message/message'
 import './activeConnection.css'
-const man1 = require('../../Images/man-1.png')
+const man1 = require('../../Images/female-avitar.jpeg')
 
 export default function ActiveConnection(props) {
 

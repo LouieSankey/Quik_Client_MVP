@@ -1,0 +1,84 @@
+.splash-main {
+    margin-right: 40px;
+    margin-left: 40px;
+}
+
+.splash-header {
+    width: 50%;
+    background-color: white;
+    padding-top: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.header {
+    margin-top: 0px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+
+.logo {
+    font-size: 18px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.tagline {
+    margin-top: 6px;
+    font-size: 12px;
+}
+
+.signup-button {
+    position: absolute;
+    bottom: -20;
+    margin-bottom: 40px;
+    color: white;
+    background-color: #9B196B;
+    border: none;
+    border-radius: 5px;
+    width: 160px;
+    height: 30px;
+}
+
+.quik-img {
+    height: 450px;
+    right: 0;
+    top: 0;
+    margin-top: 100px;
+    margin-right: 10px;
+    position: absolute;
+}
+
+.no-click {
+    pointer-events: none;
+}
+
+@media (max-width: 700px) {
+    .quik-img {
+        position: relative;
+        width: 90%;
+        height: auto;
+        right: 0;
+        top: 0;
+        margin-top: 0px;
+        margin-right: 10px;
+        float: left;
+    }
+    .splash-main {
+        float: left;
+        margin-right: 40px;
+        margin-left: 40px;
+    }
+    .splash-header {
+        width: 100%;
+        background-color: white;
+        padding-top: 20px;
+        border-bottom-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+    }
+    .signup-button {
+        position: relative;
+        margin-bottom: 200px;
+        margin-top: 40px;
+    }
+}

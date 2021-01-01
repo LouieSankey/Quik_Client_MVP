@@ -5,7 +5,7 @@ import L from 'leaflet';
 import './modal.css'
 
 let HeartPin = L.icon({
-  iconUrl: require('./Images/heartlocation.png'),
+  iconUrl: require('./Images/heartpin4.png'),
   iconSize: [24, 24],
 });
 
@@ -34,7 +34,7 @@ export default function Modal(props) {
        + (props.activeLocation.location.address ? " - " + props.activeLocation.location.address : "")}</h2>
      
         <div class="stars">
-          <h2 className="stars-label">Trending Score:</h2>
+          <h2 className="stars-label">Trending:</h2>
           <form className="trending-stars-form" action="">
             <input class="star star-1" id="star-1" type="radio" checked={props.activeLocation.trendingScore === 1}  name="star"/>
             <label class="star star-1" for="star-1"></label>
@@ -56,16 +56,12 @@ export default function Modal(props) {
         value={value}
       />
       <br></br>
-      {/* <label for="timeblocks">Between:</label>
-      <select name="timeblocks" id="timeblocks">
-        <option value="0">8:00am - 11:30am</option>
-        <option value="1">11:30am - 12:30pm</option>
-        <option value="2">12:30pm - 6:00pm</option>
-        <option value="3">6:00pm - 11:00pm</option>
-      </select>
-      <br></br> */}
-{props.pinsRemaining > 0 ? <button onClick={ () => {onClick()}} id="pinButton">PIN</button> :
-<p className="no-pins-view">No Pins remaining. You'll have to wait for one of your pins to expire!</p>}
+    
+{props.pinsRemaining > 0 
+? <><button onClick={ () => {onClick()}} id="pinButton">PIN</button> 
+<p className="report-location">Bad Location?</p>
+<img className="red-flag" src={require('./Images/redflag.png')} alt=""/></>
+: <p className="no-pins-view">No Pins remaining. You'll have to wait for one of your pins to expire!</p>}
       
 
     </div>

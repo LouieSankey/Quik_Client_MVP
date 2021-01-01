@@ -4,7 +4,7 @@ import './search-bar.css'
 
 
 
-const heartpin = require('../Images/heartpin.png')
+const heartpin = require('../Images/qheart2.png')
 const bars = require('../Images/bars.png')
 
 export default function SearchBar(props) {

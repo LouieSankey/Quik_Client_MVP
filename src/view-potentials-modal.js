@@ -11,7 +11,7 @@ const ShowPotentialsModal = ({ handleClose, showPotentialsModal, children }) => 
         <button className="modal-close-button" onClick={handleClose}>x</button>
         <div className="modal-content">
           <h1 className="break-modal-header">Success!</h1>
-          <h2>You've set your required Pins. Now check out 'potentials' to start making matches.</h2>
+          <h2>You've set all your Pins. You can now view your potential matches under 'Potentials'.</h2>
   
         </div>
       </section>

@@ -2,7 +2,7 @@ import React, { Component, useState, useEffect, useRef, useReducer} from 'react'
 // import { Link} from "react-router-dom";
 
 import L from 'leaflet';
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
+import { Map, TileLayer, Marker, Popup, Tooltip } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
 import Modal from '../Modal'
 import ModalSet from '../ModalSet'
@@ -12,46 +12,58 @@ import './pins.css'
 import PinBox from '../PinBox'
 import ShowPotentialsModal from '../view-potentials-modal'
 
-const HeartLocationImg = require('../Images/heartlocation.png')
+const HeartLocationImg = require('../Images/heartpin4.png')
 
 let Zoo = L.icon({
-  iconUrl: require('../Images/zoo.png'),
-  iconSize: [24, 24],
+  iconUrl: require('../Images/giraffe.png'),
+  iconSize: [44, 44],
+});
+
+let FroYo = L.icon({
+  iconUrl: require('../Images/froyopink.png'),
+  iconSize: [22, 30],
 });
 
 let Volleyball = L.icon({
   iconUrl: require('../Images/volleyball.png'),
-  iconSize: [24, 24],
+  iconSize: [42, 42],
 });
 
 let Winery = L.icon({
-  iconUrl: require('../Images/winery.png'),
-  iconSize: [24, 24],
+  iconUrl: require('../Images/winbar.png'),
+  iconSize: [42, 42],
 });
 
 let Pool = L.icon({
   iconUrl: require('../Images/billiard.png'),
-  iconSize: [24, 24],
+  iconSize: [42, 42],
 });
 
 let Garden = L.icon({
-  iconUrl: require('../Images/garden.png'),
-  iconSize: [24, 24],
+  iconUrl: require('../Images/flower.png'),
+  iconSize: [36, 36],
 });
 
 let Beach = L.icon({
   iconUrl: require('../Images/beach.png'),
-  iconSize: [24, 24],
+  iconSize: [42, 42],
 });
+
+let BeachBar = L.icon({
+  iconUrl: require('../Images/cocktail.png'),
+  iconSize: [40, 40],
+});
+
+
 
 let ThemePark = L.icon({
   iconUrl: require('../Images/theme park.png'),
-  iconSize: [24, 24],
+  iconSize: [42, 42],
 });
 
 let Surfing = L.icon({
   iconUrl: require('../Images/surfing.png'),
-  iconSize: [24, 24],
+  iconSize: [42, 42],
 });
 
 
@@ -63,35 +75,50 @@ let MusicIcon = L.icon({
 
 let CoffeeIcon = L.icon({
   iconUrl: require('../Images/coffee.png'),
-  iconSize: [24, 24],
+  iconSize: [42, 42],
+});
+
+let JuiceIcon = L.icon({
+  iconUrl: require('../Images/blender.png'),
+  iconSize: [34, 34],
+});
+
+let Skate = L.icon({
+  iconUrl: require('../Images/rollerskate.png'),
+  iconSize: [30, 30],
 });
 
 
 
 let MiniGolf = L.icon({
-  iconUrl: require('../Images/minigolf.png'),
-  iconSize: [24, 24],
+  iconUrl: require('../Images/mini-golf.png'),
+  iconSize: [36, 36],
 });
 
 
 let Aquarium = L.icon({
-  iconUrl: require('../Images/aquarium.png'),
-  iconSize: [24, 24],
+  iconUrl: require('../Images/fish.png'),
+  iconSize: [42, 42],
 });
 
 let ScienceMuseum = L.icon({
-  iconUrl: require('../Images/science museum.png'),
-  iconSize: [24, 24],
+  iconUrl: require('../Images/science-museum.png'),
+  iconSize: [42, 42],
+});
+
+let Park = L.icon({
+  iconUrl: require('../Images/park.png'),
+  iconSize: [42, 42],
 });
 
 let HeartLocationPin = L.icon({
   iconUrl: HeartLocationImg,
-  iconSize: [60, 60],
+  iconSize: [36, 48],
 
 });
 
 let Invisible = L.icon({
-  iconUrl: require('../Images/science museum.png'),
+  iconUrl: require('../Images/emptyicon.png'),
   iconSize: [0, 0],
 });
 
@@ -105,30 +132,36 @@ const categories = {
   "Roller Rink": "52e81612bcbc57f1066b79e9,",
   "Zoo": "4bf58dd8d48988d17b941735,",
   "Beach Bar": "52e81612bcbc57f1066b7a0d,",
-  "Botanical Garden": "52e81612bcbc57f1066b7a22,",
+  // "Botanical Garden": "52e81612bcbc57f1066b7a22,",
   "Hookah Bar": "4bf58dd8d48988d119941735,",
-  "Volleyball Court": "4eb1bf013b7b6f98df247e07,",
+  // "Ice Cream Shop": "4bf58dd8d48988d1c9941735",
+  // "Volleyball Court": "4eb1bf013b7b6f98df247e07,",
   // "Pool Hall": "4bf58dd8d48988d1e3931735,",
   // "Café": "4bf58dd8d48988d16d941735"
-  "National Park": "52e81612bcbc57f1066b7a21"
+  // "National Park": "52e81612bcbc57f1066b7a21"
   //  "Smoothie Shop" : "52f2ab2ebcbc57f1066b8b41"
+  "Frozen Yogurt Shop": "512e7cae91d4cbb4e5efe0af",
+  // "Winery" : "4bf58dd8d48988d14b941735"
+  // "Observatory": "5744ccdfe4b0c0459246b4d9"
+  
 }
 
 const categoryIcon = {
   "Mini Golf": MiniGolf,
   "Aquarium": Aquarium,
-  "Science Museum": ScienceMuseum,
+  "Science Museum": Invisible,
   "Zoo": Zoo,
-
-  // "Pool Hall": Pool,
+  "Frozen Yogurt Shop": FroYo,
+  // "Observatory": Winery,
+  // "Observatory": Pool,
   "Billiards Hall": Pool,
   "Volleyball Court": Volleyball,
   "Botanical Garden": Garden,
-  "Roller Rink": ThemePark,
-  "Beach Bar": Beach,
+  "Roller Rink": Skate,
+  "Beach Bar": BeachBar,
   "Surf Spot": Surfing,
-  "Coffee Shop": CoffeeIcon,
-  "National Park": Beach
+  "Smoothie Shop": JuiceIcon,
+  "National Park": Park
 }
 
 let venueCategories = ""
@@ -163,7 +196,7 @@ export default function Pins(props) {
     
 
     Promise.all([
-      "https://api.foursquare.com/v2/venues/search?client_id=UVAGMVPM2CSP02QGCJDM0TW10PMMDO2AJQYEKTH3ON0AB020&client_secret=ZR4PVACGO4QU2WTXE3QW04D0ZIMKA3CILMWWSIX2LWGNK4KB&v=20200101&near=" + center + "&intent=browse&radius=5000&categoryId=" + "4bf58dd8d48988d1e0931735" + "&limit=50",
+      "https://api.foursquare.com/v2/venues/search?client_id=UVAGMVPM2CSP02QGCJDM0TW10PMMDO2AJQYEKTH3ON0AB020&client_secret=ZR4PVACGO4QU2WTXE3QW04D0ZIMKA3CILMWWSIX2LWGNK4KB&v=20200101&near=" + center + "&intent=browse&radius=5000&categoryId=" + "52f2ab2ebcbc57f1066b8b41" + "&limit=50",
       "https://api.foursquare.com/v2/venues/search?client_id=UVAGMVPM2CSP02QGCJDM0TW10PMMDO2AJQYEKTH3ON0AB020&client_secret=ZR4PVACGO4QU2WTXE3QW04D0ZIMKA3CILMWWSIX2LWGNK4KB&v=20200101&near=" + center + "&intent=browse&radius=5000&categoryId=" + venueCategories + "&limit=50",
 
     ].map((request) => {
@@ -254,7 +287,14 @@ export default function Pins(props) {
               onClick={() => {
                 setActiveLocation(location);
               }}
-            />
+            >
+               <Tooltip direction="top" offset={[10, 0]}>
+       {<>
+        <p>{location.name}</p>
+         <p>{location.categories[0].name}</p>
+         </>}
+     </Tooltip>
+            </Marker>
           ))}
 
           {activeLocation && (!props.pinnedLocationIds.has(activeLocation.id) ? (
