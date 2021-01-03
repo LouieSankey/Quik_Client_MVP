@@ -253,7 +253,7 @@
         }
         .connection-list {
             width: 100%;
-            overflow: scroll;
+            overflow: auto;
             white-space: nowrap;
             height: unset;
         }

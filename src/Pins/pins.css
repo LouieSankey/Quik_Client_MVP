@@ -59,4 +59,7 @@
     .mobile-only {
         display: unset;
     }
+    .leaflet-tooltip-pane {
+        display: none;
+    }
 }
