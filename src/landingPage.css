@@ -3,6 +3,13 @@
     margin-left: 40px;
 }
 
+.landing-page-bullets {
+    padding-top: 0px;
+    margin-top: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
 .splash-header {
     width: 50%;
     background-color: white;
@@ -29,7 +36,7 @@
 }
 
 .signup-button {
-    position: absolute;
+    /* position: absolute; */
     bottom: -20;
     margin-bottom: 40px;
     color: white;
@@ -37,7 +44,8 @@
     border: none;
     border-radius: 5px;
     width: 160px;
-    height: 30px;
+    height: 40px;
+    margin-bottom: 20px;
 }
 
 .quik-img {

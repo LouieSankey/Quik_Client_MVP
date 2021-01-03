@@ -17,7 +17,7 @@ p {
     font-family: Roboto, Arial, sans-serif;
     font-size: 14px;
     color: #666;
-    line-height: 22px;
+    /* line-height: 22px; */
 }
 
 .modal-heartpin {
@@ -192,7 +192,6 @@ p {
 }
 
 .potential-matches-header {
-    margin-top: 0px;
     margin-bottom: 6px;
 }
 
@@ -270,6 +269,11 @@ p {
     /* stroke: #004a8f;
     fill: #004a8f;
     width: 200px; */
+}
+
+.view-potentials {
+    color: blue;
+    cursor: pointer;
 }
 
 .testbox {
@@ -369,20 +373,22 @@ input[type="time"]::-webkit-inner-spin-button {
     margin: 2px 22px 0 0;
 }
 
-input[type=radio],
+
+/* input[type=radio],
 input.other {
     display: none;
+} */
+
+.question span {
+    margin-left: 30px;
 }
 
-label.radio {
+
+/* label.radio {
     position: relative;
     display: inline-block;
     margin: 5px 20px 10px 0;
     cursor: pointer;
-}
-
-.question span {
-    margin-left: 30px;
 }
 
 label.radio:before {
@@ -394,9 +400,10 @@ label.radio:before {
     height: 15px;
     border-radius: 50%;
     border: 2px solid #ccc;
-}
+} */
 
-#radio_5:checked~input.other {
+
+/* #radio_5:checked~input.other {
     display: block;
 }
 
@@ -421,7 +428,7 @@ label.radio:after {
 
 input[type=radio]:checked+label:after {
     opacity: 1;
-}
+} */
 
 .btn-block {
     margin-top: 10px;

@@ -1,14 +1,15 @@
     .container {
         margin: 0 auto;
         width: 100%;
-        background: lightslategray;
+        background: white;
         border-radius: 5px;
     }
     
     .connected-header {
-        color: white;
+        color: black;
         margin-right: 10px;
         margin-left: 10px;
+        margin-bottom: 0px;
     }
     
     .people-list {
@@ -70,7 +71,7 @@
     }
     
     .chat-header {
-        padding: 20px;
+        padding: 10px;
         border-bottom: 2px solid white;
     }
     
@@ -103,7 +104,7 @@
     
     .chat-history {
         border-bottom: 2px solid white;
-        overflow-y: scroll;
+        overflow-y: auto;
         height: 170px;
     }
     
@@ -112,9 +113,9 @@
     }
     
     .chat-selection-header {
-        color: rgb(167, 167, 167);
+        color: darkgray;
         margin: 10px;
-        font-size: 16px;
+        font-size: 14px;
     }
     
     textarea {
@@ -179,7 +180,7 @@
     }
     
     .small-image {
-        width: 130px;
+        width: 100px;
         height: auto;
     }
     
@@ -192,13 +193,12 @@
     .reveal-button {
         font-size: 12px;
         width: 140px;
-        margin-top: 70px;
+        margin-top: 50px;
         float: right;
         color: white;
         padding: 10px;
         background: darkblue;
-        ;
-        font-size: 16px;
+        font-size: 14px;
         text-transform: uppercase;
         border: none;
         cursor: pointer;
@@ -211,7 +211,11 @@
     }
     
     .connection-list {
+        overflow: auto;
         list-style: none;
+        height: 297px;
+        padding-top: 0px;
+        margin-bottom: 0px;
     }
     
     .connection-profile {
@@ -249,8 +253,9 @@
         }
         .connection-list {
             width: 100%;
-            overflow: auto;
+            overflow: scroll;
             white-space: nowrap;
+            height: unset;
         }
         .people-list li {
             display: inline-block;

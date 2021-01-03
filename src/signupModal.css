@@ -1,0 +1,144 @@
+.login-modal {
+    padding: 20px;
+    position: absolute;
+    width: 300px;
+    height: 490px;
+    background-color: white;
+    border: solid 2px rgb(98, 98, 98);
+    top: 54%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
+    border-radius: 5px;
+}
+
+.login-component {
+    background-color: white;
+    border: solid 2px lightgray;
+    width: 90%;
+}
+
+input {
+    color: black;
+    background-color: white;
+    border: unset;
+    border: solid 1px lightgray;
+    padding: 4px;
+}
+
+.personal-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.personal-details>div>div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+
+/* .personal-details>div,
+input,
+label {
+    width: 100%;
+} */
+
+.checkbox {
+    margin-bottom: 10px;
+}
+
+#male,
+#female {
+    margin: 6px;
+}
+
+
+/* 
+input[type=radio] {
+    display: relative;
+} */
+
+select,
+.children,
+.gender,
+.bdate-block {
+    width: calc(100% + 26px);
+    padding: 2px;
+}
+
+select {
+    background: transparent;
+}
+
+.gender input {
+    width: auto;
+}
+
+.gender label {
+    padding: 0 5px 0 0;
+}
+
+.bdate-block {
+    display: flex;
+    justify-content: space-between;
+}
+
+.birthdate select.day {
+    width: 35px;
+}
+
+.birthdate select.month {
+    width: calc(100% - 94px);
+}
+
+.birthdate input {
+    width: 38px;
+    vertical-align: unset;
+}
+
+.signup-form {
+    width: unset;
+    padding: 0px;
+    border-radius: 0px;
+    background: none;
+    box-shadow: none;
+}
+
+.signup-header {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.toggle-signin {
+    margin-top: 10px;
+    text-align: center;
+    clear: both;
+}
+
+.signin-link {
+    color: purple;
+    cursor: pointer;
+}
+
+.create-account-button {
+    float: right;
+    margin-bottom: 32px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    background-color: #a82877;
+    padding: 14px;
+    cursor: pointer;
+}
+
+.close-button {
+    float: right;
+    margin-right: -10px;
+    margin-top: -10px;
+    border: none;
+    background: none;
+    font-size: 16px;
+    cursor: pointer;
+}

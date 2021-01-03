@@ -31,7 +31,10 @@ export default function Connects(props) {
     return (
         <div className="container clearfix">
             <div className="people-list" id="people-list">
-                {props.recentMatchId !== null && <h2 className="connected-header">Congrats! You are now connected with {connects[0].name}.</h2>}
+                {props.recentMatchId === null 
+                ?<h2 className="connected-header">You have 0 new connections.</h2>
+                :<h2 className="connected-header">Congrats! You are now connected with {connects[0].name}.</h2>
+                }
                 <h3 className="chat-selection-header">The day and location you matched will be kept secret until you mutually agree to reveal it.</h3>
                 <ul className="connection-list">
                     {connects.map((connect, i) => {

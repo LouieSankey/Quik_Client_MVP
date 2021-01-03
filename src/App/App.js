@@ -12,9 +12,9 @@ import './App.css';
 import Landing from '../landingPage'
 
 
-import { createBrowserHistory } from "history";
+// import { createBrowserHistory } from "history";
 
-const history = createBrowserHistory();
+// const history = createBrowserHistory();
 const man1 = require('../Images/man-1.png')
 const man2 = require('../Images/man-2.png')
 const man3 = require('../Images/man-3.png')

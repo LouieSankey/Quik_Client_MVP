@@ -1,5 +1,6 @@
 import React, { Component, useState, useEffect, useRef, useReducer} from 'react';
 // import { Link} from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 import L from 'leaflet';
 import { Map, TileLayer, Marker, Popup, Tooltip } from 'react-leaflet'
@@ -11,6 +12,8 @@ import '../App/App.css'
 import './pins.css'
 import PinBox from '../PinBox'
 import ShowPotentialsModal from '../view-potentials-modal'
+
+
 
 const HeartLocationImg = require('../Images/heartpin4.png')
 
@@ -169,7 +172,7 @@ for (const key in categories) {
   venueCategories += categories[key]
 }
 
-export default function Pins(props) {
+function Pins(props) {
 
   const [activeLocation, setActiveLocation] = React.useState(null);
 
@@ -213,6 +216,7 @@ export default function Pins(props) {
         })
 
         const addedVenues = [...coffee, ...values[1].response.venues, ...venues]
+        
         const allVenues = unique(addedVenues, "id")
 
         const trendingScoreVenues = allVenues.map(venue => {
@@ -223,7 +227,11 @@ export default function Pins(props) {
 
         })
 
-        setVenues(trendingScoreVenues)
+
+          setVenues(trendingScoreVenues)
+
+        
+
       }).catch(console.error.bind(console));
 
   };
@@ -246,6 +254,11 @@ export default function Pins(props) {
 //   return () => clearTimeout(timer);
 // }, []);
 
+const pushPotentials = () => {
+  console.log('pushed')
+  props.history.push('/potentials')
+}
+
 
   return (<>
 
@@ -266,23 +279,16 @@ export default function Pins(props) {
           />
 
           {venues.map((location, i) => (
- 
-            
             <Marker
             key={i}
               icon={
-
-                
                 props.pinnedLocationIds.has(location.id) ?
                   HeartLocationPin :
-                  (categoryIcon[location.categories[0].name]
-                    ? categoryIcon[location.categories[0].name]
-                    : Invisible)
-
+                  (! categoryIcon[location.categories[0].name]
+                    ? Invisible
+                    : categoryIcon[location.categories[0].name] )
               }
               zIndexOffset={props.pinnedLocationIds.has(location.id) ? 100 : 0}
-
-              key={i}
               position={[location.location.lat, location.location.lng]}
               onClick={() => {
                 setActiveLocation(location);
@@ -332,7 +338,7 @@ export default function Pins(props) {
         pinsRemaining={props.pinsRemaining}
       />
 {props.pinsRemaining === 0 && showPotentialsModal &&
-      <ShowPotentialsModal showPotentialsModal={showPotentialsModal} handleClose={() => setshowPotentialsModal(false)}></ShowPotentialsModal>
+      <ShowPotentialsModal pushPotentials={pushPotentials} showPotentialsModal={showPotentialsModal} handleClose={() => setshowPotentialsModal(false)}></ShowPotentialsModal>
 }
         </Map>
 
@@ -349,6 +355,8 @@ export default function Pins(props) {
   </>
   );
 }
+
+export default withRouter(Pins)
 
 
 

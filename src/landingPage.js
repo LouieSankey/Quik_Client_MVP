@@ -1,16 +1,25 @@
 import React, { Component, useState } from 'react';
 import './landingPage.css'
+import LoginModal from './signupModal'
+import SignupModal from './loginModal'
 
 const heartpin = require('./Images/qheart2.png')
 const bars = require('./Images/bars.png')
 
 export default function Landing(props) {
 
-    console.log("con: " + JSON.stringify(props.history))
+    const [showModal, setShowModal] = useState(false)
+    const [signup, setSignup] = useState(true)
 
-    return(
+
+    return (
 
         <>
+            {showModal && (signup ?
+                <LoginModal showModal={setShowModal} signup={setSignup} setIsLoggedIn={props.setIsLoggedIn}></LoginModal>
+                :
+                <SignupModal showModal={setShowModal} signup={setSignup} setIsLoggedIn={props.setIsLoggedIn}></SignupModal>)
+            }
             <div className="navbar no-click flex">
 
                 <h1 className="logo-text header-column-1"><img className="logo-image" src={heartpin} alt=""></img><span className="logo-main-text">uik</span> </h1>
@@ -23,37 +32,46 @@ export default function Landing(props) {
                     <h3 className="my-quik logo-text"> My Quik </h3>
                 </div>
 
-                </div>
-        <main className="splash-main">
-
-            
-        <div className="splash-header">
-
-            <div className="header">
-                <h1 >Quik puts the 'date' back in dating.</h1>
-                
-                <h2 >Tired of 'dating' apps never leading to real dates?</h2>
-                <br/>
-               
-                <p>Quik let's you pin locations for dates you already want to go on, then find potential matches with people who pinned the same location.</p>
-                <br/>
-                <p>Quik is Safe - Users will never know the exact location you matched until you mutually agreed to reveal it.</p>
-        
-                 <p>Quik is Fun - pick your favorite locations and see who else shares the same interests.</p>
             </div>
+            <main className="splash-main">
 
-        </div>
 
-        <img className="quik-img" src={require('./Images/iphonelanding.png')} alt=""></img>
-       
-        <button className="signup-button" onClick={props.setIsLoggedIn(true)}>Login / Sign Up</button>
+                <div className="splash-header">
 
-    </main>
-    </>
+                    <div className="header">
+                        <h1 >Quik puts the 'date' back in online dating.</h1>
+
+                        <h2 >Tired of swiping and matching but never ending up on real dates?</h2>
+                        <br />
+
+                        <p>Quik let's you pin locations in your city or that you'd like to visit, then find potential matches with people who pinned the same location.</p>
+                        <br />
+                        <ul className="landing-page-bullets">
+                            <li>                <p>Quik is Safe - Users will never know the exact location you matched until you mutually agreed to reveal it.</p>
+                            </li>
+                            <li>                 <p>Quik is Fun - pick your favorite locations and see who else shares the same interests.</p>
+                            </li>
+                            <li>                 <p>Quik is Free! - With Quik you don't have to pay a fortune to find a date, get 5 reusable locations pins completely free!</p>
+                            </li>
+                        </ul>
+
+
+
+                    </div>
+
+                </div>
+
+                <img className="quik-img" src={require('./Images/iphonelanding.png')} alt=""></img>
+                <button className="signup-button" onClick={() => setShowModal(true)}>Log In / Sign Up</button>
+
+
+
+            </main>
+        </>
 
     )
 }
 
 
 
-    
+

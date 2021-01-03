@@ -1,7 +1,7 @@
 import React, { Component, useState,  useEffect, useRef } from 'react';
 import Message from '../Message/message'
 import './activeConnection.css'
-const man1 = require('../../Images/female-avitar.jpeg')
+const man1 = require('../../Images/blank-woman.jpeg')
 
 export default function ActiveConnection(props) {
 
@@ -60,7 +60,7 @@ export default function ActiveConnection(props) {
     <div className="chat">
     <div className="chat-header clearfix">
       {!activeUser.connectedStatus && 
-      <h3>Pin your remaining pins then select a connection to chat.</h3>}
+      <h3>Pin any remaining pins then select a connection to chat.</h3>}
         <img className="small-image" src={activeUser.profileImage} alt="avatar" />
 
 {activeUser.connectedStatus && (dateRequested ?  <button className="reveal-button" onClick={requestDate}>Request Date Reveal</button>
