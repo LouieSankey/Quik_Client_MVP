@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 import './search-bar.css'
 
 
-
 const heartpin = require('../Images/qheart2.png')
 const bars = require('../Images/bars.png')
 
@@ -13,6 +12,8 @@ export default function SearchBar(props) {
     const handleInput = event => {
         setLocation(event.target.value)
     };
+    const [displayDropdown, setDisplayDropdown] = useState(false)
+
 
     const changeLocation = () => {
         props.onLocationChange(location)
@@ -28,6 +29,11 @@ export default function SearchBar(props) {
       }
 
 
+      const logout = () => {
+        localStorage.setItem("quik_account_id", null)
+        history.push('/quik')
+      }
+
 
     return (
         <div className="navbar flex">
@@ -39,7 +45,20 @@ export default function SearchBar(props) {
             </button>
          
             <div className="header-column-3" >
-                <h3 className="my-quik logo-text"> My Quik </h3>
+                {/* <h3 className="my-quik logo-text" onClick={logout}> My Quik </h3> */}
+
+                <div class="dropdown">
+                <button class="btn" >
+                   <img class="burger" onClick={() => setDisplayDropdown(!displayDropdown)} src={require('../Images/hamburgerIcon.png')} alt=""/>
+                </button>
+                {displayDropdown &&
+                <div class="dropdown-content">
+                    <a onClick={logout} href="">Log Out</a>
+                </div>
+                }
+                </div>
+              
+
             </div>
 
         </div>

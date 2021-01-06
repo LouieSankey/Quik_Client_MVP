@@ -497,8 +497,10 @@ input[type=radio]:checked+label:after {
     .column-2 {
         display: none;
     }
+    .header-column-3 {
+        flex: 0.4 1;
+    }
     .header-column-2 {
-        flex: none;
         width: 75%;
         margin-right: 10px;
     }

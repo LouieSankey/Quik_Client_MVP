@@ -1,4 +1,4 @@
-import React, { Component, useState, useRef } from 'react';
+import React, { Component, useState, useEffect, useRef } from 'react';
 import { Route, Switch } from "react-router-dom";
 import Geocode from "react-geocode";
 import Pins from '../Pins/pins'
@@ -10,6 +10,7 @@ import NavBar from '../NavBar/nav-bar'
 import 'leaflet/dist/leaflet.css';
 import './App.css';
 import Landing from '../landingPage'
+import ApiService from '../api-services'
 
 
 // import { createBrowserHistory } from "history";
@@ -72,6 +73,8 @@ const exampleMatches = [
 ]
 
 
+
+
 export default function App(props) {
 
   const mapRef = useRef()
@@ -113,7 +116,6 @@ export default function App(props) {
     if(potentialMatch.connectedStatus === 0){
         newStatus = 2
     }else{
-
         newStatus = 3
     }
 
@@ -140,7 +142,30 @@ export default function App(props) {
     }
   }
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const id = localStorage.getItem('quik_account_id')
+
+  const [isLoggedIn, setIsLoggedIn] = useState(Number(id)  ? true : false)
+   const [user, setUser] = useState({})
+
+  useEffect(() => {
+    console.log("use effect", isLoggedIn, user,  Number(id))
+
+    if(isLoggedIn && user !== {}){
+   
+      ApiService.getAccountById(
+        Number(id)
+      ).then(user => {
+      setUser(user)
+    }).catch(err => {
+
+        console.log("error", err)
+    })
+
+    }
+
+
+  }, []);
+
 
 
   return (    
@@ -189,7 +214,7 @@ export default function App(props) {
         </>
         :
         <Route exact path="/quik">
-        <Landing setIsLoggedIn={() => setIsLoggedIn} ></Landing>
+        <Landing setUser={setUser} setIsLoggedIn={setIsLoggedIn} ></Landing>
         </Route>
        }
   </>

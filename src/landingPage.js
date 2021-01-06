@@ -16,9 +16,9 @@ export default function Landing(props) {
 
         <>
             {showModal && (signup ?
-                <LoginModal showModal={setShowModal} signup={setSignup} setIsLoggedIn={props.setIsLoggedIn}></LoginModal>
+                <LoginModal showModal={setShowModal} signup={setSignup} setUser={props.setUser} setIsLoggedIn={props.setIsLoggedIn}></LoginModal>
                 :
-                <SignupModal showModal={setShowModal} signup={setSignup} setIsLoggedIn={props.setIsLoggedIn}></SignupModal>)
+                <SignupModal showModal={setShowModal} signup={setSignup} setUser={props.setUser} setIsLoggedIn={props.setIsLoggedIn}></SignupModal>)
             }
             <div className="navbar no-click flex">
 
@@ -39,9 +39,10 @@ export default function Landing(props) {
                 <div className="splash-header">
 
                     <div className="header">
+
+                        {/* <h1 >Tired of 'dating' apps leading to more frustration than real dates?</h1> */}
                         <h1 >Quik puts the 'date' back in online dating.</h1>
 
-                        <h2 >Tired of swiping and matching but never ending up on real dates?</h2>
                         <br />
 
                         <p>Quik let's you pin locations in your city or that you'd like to visit, then find potential matches with people who pinned the same location.</p>
