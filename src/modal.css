@@ -44,6 +44,102 @@ input.star:checked~label.star:before {
 }
 
 
+/* styles the date picker */
+
+.red-flag {
+    display: none;
+    width: 20px;
+}
+
+.report-location {
+    float: right;
+    cursor: pointer;
+    color: rgba(255, 0, 0, 0.712);
+    font-size: 12px;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+    font-size: 10px;
+    padding: 0px;
+}
+
+.react-calendar__month-view__days__day--weekend {
+    color: -internal-light-dark(rgba(16, 16, 16, 0.3), white);
+}
+
+.calendar__tile {
+    padding: 6px;
+}
+
+.react-calendar__tile {
+    padding: 4px 0.5em;
+}
+
+.react-date-picker__button svg {
+    border-radius: 6px;
+}
+
+.react-calendar__navigation {
+    margin-bottom: 0px;
+}
+
+.react-calendar__navigation button {
+    min-width: unset;
+}
+
+.react-date-picker__calendar,
+.react-calendar {
+    width: 200px !important;
+    border-radius: 10px;
+}
+
+.react-date-picker {
+    display: block !important;
+    margin-top: 4px;
+}
+
+.react-date-picker__button {
+    opacity: 0.5;
+}
+
+.leaflet-popup-content-wrapper {
+    width: 240px;
+}
+
+.date-location-header {
+    margin-bottom: 8px !important;
+}
+
+.date-location {
+    margin: 0px;
+    font-size: 22px;
+}
+
+.date-address {
+    margin-top: 6px;
+    font-size: 12px;
+}
+
+.react-date-picker__wrapper {
+    border-radius: 3px;
+    border: thin solid #ccc !important;
+}
+
+.leaflet-popup-close-button {
+    padding: 6px;
+}
+
+.leaflet-marker-icon:hover {}
+
+.flag-location {
+    width: 6px;
+    height: 10px;
+    float: right;
+    margin-top: 2px;
+    margin-left: 4px;
+}
+
+
 /*
 
 input.star-5:checked~label.star:before {

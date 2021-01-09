@@ -182,6 +182,7 @@ function Pins(props) {
 
   const popup = React.createRef();
   const closePopupOnClick = () => {
+    onViewportChanged()
     popup.current.leafletElement.options.leaflet.map.closePopup();
   }
 
@@ -189,6 +190,8 @@ function Pins(props) {
 
   const [showPotentialsModal, setshowPotentialsModal] = useState(true)
   // setshowPotentialsModal(props.pinsRemaining === 0)
+
+
 
   const onViewportChanged = (viewport) => {
 
@@ -220,17 +223,28 @@ function Pins(props) {
         const allVenues = unique(addedVenues, "id")
 
         const trendingScoreVenues = allVenues.map(venue => {
-          return {
-            ...venue,
-            trendingScore: Math.floor(Math.random() * 5) + 1  
-          }
+          // console.log(venue.id)
+
+
+      let icon = props.pinnedLocationIds.has(venue.id) ?
+          HeartLocationPin : 
+          (! categoryIcon[venue.categories[0].name]
+            ? Invisible
+            : categoryIcon[venue.categories[0].name] )
+
+
+            return {
+              ...venue,
+              icon: icon,
+              trendingScore: Math.floor(Math.random() * 5) + 1  
+            }
+                
+
 
         })
 
 
           setVenues(trendingScoreVenues)
-
-        
 
       }).catch(console.error.bind(console));
 
@@ -245,15 +259,6 @@ function Pins(props) {
     }, [props.mapCenter]);
 
 
-
-
-// useEffect(() => {
-//   const timer = setTimeout(() => {
-//     console.log('This will run after 1 second!')
-//   }, 1000);
-//   return () => clearTimeout(timer);
-// }, []);
-
 const pushPotentials = () => {
   console.log('pushed')
   props.history.push('/potentials')
@@ -265,8 +270,9 @@ const pushPotentials = () => {
     <div className="row">
       <div className="column-1">
         <Map
+       
         ref={props.mapRef}
-        
+        preferCanvas={true}
           onViewportChanged={onViewportChanged}
           center={props.mapCenter}
           className="map"
@@ -280,14 +286,12 @@ const pushPotentials = () => {
 
           {venues.map((location, i) => (
             <Marker
-            key={i}
+            key={location.id}
               icon={
-                props.pinnedLocationIds.has(location.id) ?
-                  HeartLocationPin :
-                  (! categoryIcon[location.categories[0].name]
-                    ? Invisible
-                    : categoryIcon[location.categories[0].name] )
+                 location.icon
+              
               }
+
               zIndexOffset={props.pinnedLocationIds.has(location.id) ? 100 : 0}
               position={[location.location.lat, location.location.lng]}
               onClick={() => {
@@ -314,8 +318,10 @@ const pushPotentials = () => {
               <Modal activeLocation={activeLocation}
                 pushPinnedLocation={props.pushPinnedLocation}
                 closeModal={closePopupOnClick}
+                
                 usePin={props.usePin}
                 pinsRemaining={props.pinsRemaining}
+                user={props.user}
               />
 
             </Popup>
@@ -328,7 +334,7 @@ const pushPotentials = () => {
                 setActiveLocation(null);
               }}
             >
-              <ModalSet activeLocation={activeLocation}
+              <ModalSet activeLocation={activeLocation} locationDateMap={props.locationDateMap}
               />
 
             </Popup>

@@ -10,7 +10,9 @@ import NavBar from '../NavBar/nav-bar'
 import 'leaflet/dist/leaflet.css';
 import './App.css';
 import Landing from '../landingPage'
-import ApiService from '../api-services'
+import APIService from '../api-services'
+import DateFormat from 'dateformat'
+
 
 
 // import { createBrowserHistory } from "history";
@@ -55,21 +57,8 @@ const exampleMatches = [
     age: "22",
     connectedStatus: 1,
     profileImage: man4
-  },
-  // {
-  //   id: 5,
-  //   name: "Ron",
-  //   age: "34",
-  //   connectedStatus: 1,
-  //   profileImage: man2
-  // },
-  // {
-  //   id: 6,
-  //   name: "Dan",
-  //   age: "38",
-  //   connectedStatus: 1,
-  //   profileImage: man3
-  // },
+  }
+ 
 ]
 
 
@@ -79,14 +68,14 @@ export default function App(props) {
 
   const mapRef = useRef()
 
-  Geocode.setApiKey( "AIzaSyASSi9FH6fRM1t7traviF7fqokhJgmsbEY")
+  Geocode.setApiKey("AIzaSyASSi9FH6fRM1t7traviF7fqokhJgmsbEY")
   Geocode.setLanguage("en");
 
-  function onLocationChange(location){
+  function onLocationChange(location) {
     Geocode.fromAddress(location).then(
       response => {
         const { lat, lng } = response.results[0].geometry.location;
-        setMapCenter([lat,lng])
+        setMapCenter([lat, lng])
         //call viewportchanged
       },
       error => {
@@ -95,35 +84,95 @@ export default function App(props) {
     );
   }
 
-
   const [pinnedLocationIds, setpinnedLocationIds] = useState(new Set([]));
-  const [pinsRemaining, setPinsRemaining] = useState(2)
+  const [locationDateMap, setLocationDateMap] = useState(new Map())
+  const [pinsRemaining, setPinsRemaining] = useState(5)
   const [mapCenter, setMapCenter] = React.useState([37.77400521704548, -122.43092782795432]);
   const [mapZoom, setMapZoom] = React.useState(13);
-  const [matches, setMatches] = useState(exampleMatches)
+  const [matches, setMatches] = useState([])
   const [recentMatchId, setRecentMatchId] = useState(null)
+
+ 
+
+   const pushPinnedLocation = (location, date) => {
+    setpinnedLocationIds(new Set(pinnedLocationIds.add(location)))
+    setLocationDateMap(new Map(locationDateMap.set(location, date)))
+  }
+
+  //first thing is to query if a user already has pins and set them like above
+  //the function above will then add to them
+
 
   const usePin = () => {
     setPinsRemaining(pinsRemaining - 1)
+    getMatchesFromDB()
   }
 
-  const pushPinnedLocation = (location) => {
-    setpinnedLocationIds(new Set(pinnedLocationIds.add(location)))
+  
+
+//second
+  //if pins remaining = 0 query and set 'matches' with anyone who matches any of the current users
+  //location-date ids -- those should already be set as 'pinnedLocationIds' from initial pins query
+  //and resent pins.
+
+
+const getMatchesFromDB = () => {
+  if(pinsRemaining === 1){
+
+    let pinsArray = Array.from(locationDateMap)
+    pinsArray.map(obj => {
+
+      let location = obj[0]
+      let date = DateFormat(obj[1], "mm-d-yyyy");
+      let locationDate = date + "-" + location
+   
+      let dbMatches;
+
+      let params = {
+        location_date_id: locationDate, 
+        user_id: user.id, 
+        seeking: user.seeking
+      }
+      APIService.getMatchesByLocationDateId(params).then(data => {
+
+       dbMatches = data.map((match, i) => {
+        match.connectedStatus = 0
+        match.name = match.user_name
+         return match
+       })
+
+      }).then(() => {
+
+        setMatches(matches => [...matches, ...dbMatches]);
+      })
+
+    })
   }
+}
+ 
+
+
+//connection status codes
+// 'like' button = status code 0
+// ' you sent a like' = status code 1
+// connect button = status code 2
+// shows up in 'connects' status code 3
 
   const changeStatus = (potentialMatch, props) => {
     let newStatus;
-    if(potentialMatch.connectedStatus === 0){
-        newStatus = 2
-    }else{
-        newStatus = 3
+    
+    if (potentialMatch.connectedStatus === 0) {
+      newStatus = 2
+    } else {
+
+      newStatus = 3
     }
 
     let id;
 
     setMatches([...matches].map((match) => {
-      if(match.id === potentialMatch.id) {
-        if(newStatus === 3){
+      if (match.id === potentialMatch.id) {
+        if (newStatus === 3) {
           id = match.id
         }
         return {
@@ -135,89 +184,99 @@ export default function App(props) {
       else return match;
     }))
 
-    if(newStatus === 3){
+    if (newStatus === 3) {
       setRecentMatchId(id)
       props.history.push('/connects')
-   
+
     }
   }
 
   const id = localStorage.getItem('quik_account_id')
 
-  const [isLoggedIn, setIsLoggedIn] = useState(Number(id)  ? true : false)
-   const [user, setUser] = useState({})
+  const [isLoggedIn, setIsLoggedIn] = useState(Number(id) ? true : false)
+  const [user, setUser] = useState({})
 
   useEffect(() => {
-    console.log("use effect", isLoggedIn, user,  Number(id))
 
-    if(isLoggedIn && user !== {}){
-   
-      ApiService.getAccountById(
+    if (isLoggedIn && user !== {}) {
+
+      APIService.getAccountById(
         Number(id)
-      ).then(user => {
-      setUser(user)
-    }).catch(err => {
-
+      ).then(_user => {
+        setUser(_user)
+      }).then(() => {
+        getPins(user.id)
+      }).catch(err => {
         console.log("error", err)
-    })
+      })
 
+    } else {
+      getPins(user.id)
     }
 
 
   }, []);
 
+  const getPins = (user_id) => {
+
+    // console.log(user_id)
+
+  }
 
 
-  return (    
-  <>
-  {isLoggedIn ? 
-  <>
-    <SearchBar onLocationChange={onLocationChange}></SearchBar>
-    <NavBar></NavBar>
-     
-    <Switch>
-          <Route exact path="/quik">
-            <Pins 
-            mapRef={mapRef}
-            pinnedLocationIds={pinnedLocationIds}
-            pinsRemaining={pinsRemaining} 
-            pushPinnedLocation={pushPinnedLocation} 
-            usePin={usePin} 
-            mapCenter={mapCenter}
-            setMapCenter={setMapCenter}
-            matches={matches}
-            setMapZoom={setMapZoom}
-            mapZoom={mapZoom}
-            changeStatus={changeStatus}
-            />
-          </Route>
 
-         
-          <Route path="/potentials">
+  return (
+    <>
+      {isLoggedIn ?
+        <>
+          <SearchBar onLocationChange={onLocationChange}></SearchBar>
+          <NavBar></NavBar>
 
-            {/* dont forget, 
+          <Switch>
+            <Route exact path="/quik">
+              <Pins
+                mapRef={mapRef}
+                user={user}
+                pinnedLocationIds={pinnedLocationIds}
+                pinsRemaining={pinsRemaining}
+                pushPinnedLocation={pushPinnedLocation}
+                locationDateMap={locationDateMap}
+                usePin={usePin}
+                mapCenter={mapCenter}
+                setMapCenter={setMapCenter}
+                matches={matches}
+                setMapZoom={setMapZoom}
+                mapZoom={mapZoom}
+                changeStatus={changeStatus}
+              />
+            </Route>
+
+
+            <Route path="/potentials">
+
+              {/* dont forget, 
             the props for 'Potentials' must also pass 
             through 'potentials in the 'Pins' component! */}
 
-            <Potentials
-            pinsRemaining={pinsRemaining}  
-            matches={matches}
-            changeStatus={changeStatus}/>
-            
-          </Route>
+              <Potentials
+                pinsRemaining={pinsRemaining}
+                matches={matches}
+                changeStatus={changeStatus} />
 
-          <Route path="/connects">
-            <Connects matches={matches} recentMatchId={recentMatchId}/>
-          </Route>
-          <Route path="/profile" component={ Profile }/>
-        </Switch>
+            </Route>
+
+            <Route path="/connects">
+              <Connects matches={matches} recentMatchId={recentMatchId} />
+            </Route>
+            <Route path="/profile" component={Profile} />
+          </Switch>
         </>
         :
         <Route exact path="/quik">
-        <Landing setUser={setUser} setIsLoggedIn={setIsLoggedIn} ></Landing>
+          <Landing setUser={setUser} setIsLoggedIn={setIsLoggedIn} ></Landing>
         </Route>
-       }
-  </>
+      }
+    </>
   );
 }
 

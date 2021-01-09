@@ -2,7 +2,7 @@
     padding: 20px;
     position: absolute;
     width: 300px;
-    height: 400px;
+    height: 430px;
     background-color: white;
     border: solid 2px rgb(98, 98, 98);
     top: 54%;
@@ -10,6 +10,10 @@
     transform: translate(-50%, -50%);
     z-index: 10000;
     border-radius: 5px;
+}
+
+#birthday {
+    color: darkgray;
 }
 
 .login-component {

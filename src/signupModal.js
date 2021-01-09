@@ -7,6 +7,7 @@ export default function SignupModal(props) {
 
     let emailInput = React.createRef();
     let usernameInput = React.createRef();
+    let birthdayInput = React.createRef();
     let passwordInput = React.createRef();
     let repeatPasswordInput = React.createRef();
 
@@ -16,15 +17,20 @@ export default function SignupModal(props) {
     const [reenterName, setReenterName] = useState("hidden")
     const [reenterPassword, setReenterPassword] = useState("hidden")
     const [makeSelection, setMakeSelection] = useState("hidden")
+    const [enterBirthday, setEnterBirthday] = useState("hidden")
+
 
     const createAccount = () => {
             //get data from all fields and create obj
+console.log(birthdayInput.current.value)
 
             if(usernameInput.current.value.length < 3){
                 setReenterName("show")
             }else if(!validateEmail(emailInput.current.value)){
                 setReenterEmail("show")
-            }else if(passwordInput.current.value !== repeatPasswordInput.current.value) {
+            }else if(birthdayInput.current.value === ""){
+                setEnterBirthday("show")
+            }else if(passwordInput.current.value === "" || passwordInput.current.value !== repeatPasswordInput.current.value) {
                 setReenterPassword("show")
             }else if(!seeking){
                 setMakeSelection("show")
@@ -33,6 +39,7 @@ export default function SignupModal(props) {
                 const data = {
                     "username": usernameInput.current.value,
                     "email": emailInput.current.value,
+                    "birthday": birthdayInput.current.value,
                     "password": passwordInput.current.value,
                     "seeking": seeking
             }
@@ -67,9 +74,11 @@ export default function SignupModal(props) {
                     <div class="account-details">
                         <div><label>Email*<span className={reenterEmail}>Please enter a valid email</span></label><input ref={emailInput} type="text" name="name" required></input></div>
                         <div><label>First Name*<span className={reenterName}>Must be at least 3 letters</span></label><input ref={usernameInput} type="text" name="username" required></input></div>
+                        <div><label for="birthday">Birthday:<span className={enterBirthday}> Please Enter Your Birthday</span></label><input ref={birthdayInput} type="date" id="birthday" name="birthday"/></div>
                         <div><label>Password*<span className={reenterPassword}>Your passwords do not match</span></label><input ref={passwordInput} type="password" name="name" required></input></div>
                         <div><label>Repeat password*</label><input ref={repeatPasswordInput} type="password" name="name" required></input></div>
-                    </div>
+                      
+                  </div>
 
                     <div class="personal-details">
                         <div>

@@ -9,6 +9,7 @@ const likeButton = require('../Images/likebutton.jpeg')
 
 function PotentialMatch(props) {
 
+    const man1 = require('../Images/blank-woman.jpeg')
 
     
     let [indicatorText, setIndicatorText] = useState(props.potentialMatch.connectedStatus === 0 
@@ -18,13 +19,21 @@ function PotentialMatch(props) {
      let button = props.potentialMatch.connectedStatus === 0 ? likeButton : connectButton
 
   const onClick = () => {
+      //here when you are liking or connecting, it will need to be sent to the db somehow
+      //solve: 3 array fields on the pins table
+      //1 to tracking who you liked - this will show as liked when you log back in
+      //1 to track people who liked you - this will render option to connect when you log back in
+      //1 to track people who you're connected with - this will also initiate a firebase chat
+
+      
+
     props.changeStatus(props.potentialMatch, props)
   }
 
     return(
     <>
         <div className="result-container">
-            <img className="result-box result-img" src={props.potentialMatch.profileImage} alt=""></img>
+            <img className="result-box result-img" src={man1} alt=""></img>
             <div className="result-box">
                 <h3 className="potentialName">{props.potentialMatch.name}</h3>
                 <h4 className="potentialAge"> Age: {props.potentialMatch.age}</h4>
