@@ -133,7 +133,7 @@ const categories = {
   "Mini Golf": "52e81612bcbc57f1066b79eb,",
   "Aquarium": "4fceea171983d5d06c3e9823,",
   "Roller Rink": "52e81612bcbc57f1066b79e9,",
-  "Zoo": "4bf58dd8d48988d17b941735,",
+  // "Zoo": "4bf58dd8d48988d17b941735,",
   "Beach Bar": "52e81612bcbc57f1066b7a0d,",
   // "Botanical Garden": "52e81612bcbc57f1066b7a22,",
   "Hookah Bar": "4bf58dd8d48988d119941735,",
@@ -146,6 +146,7 @@ const categories = {
   "Frozen Yogurt Shop": "512e7cae91d4cbb4e5efe0af",
   // "Winery" : "4bf58dd8d48988d14b941735"
   // "Observatory": "5744ccdfe4b0c0459246b4d9"
+  // "Tea Room" +"4bf58dd8d48988d1dc931735"
   
 }
 
@@ -153,7 +154,7 @@ const categoryIcon = {
   "Mini Golf": MiniGolf,
   "Aquarium": Aquarium,
   "Science Museum": Invisible,
-  "Zoo": Zoo,
+  // "Zoo": Zoo,
   "Frozen Yogurt Shop": FroYo,
   // "Observatory": Winery,
   // "Observatory": Pool,
@@ -250,6 +251,10 @@ function Pins(props) {
 
   };
 
+  useEffect(()=>{
+    onViewportChanged();
+  }, props.pinsRemaining === 0)
+
     useEffect(() => {
       onViewportChanged();
     }, []);
@@ -260,7 +265,6 @@ function Pins(props) {
 
 
 const pushPotentials = () => {
-  console.log('pushed')
   props.history.push('/potentials')
 }
 

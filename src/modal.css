@@ -112,7 +112,11 @@ input.star:checked~label.star:before {
 
 .date-location {
     margin: 0px;
-    font-size: 22px;
+    font-size: 18px;
+}
+
+.created-date-header {
+    margin: 0px;
 }
 
 .date-address {

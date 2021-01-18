@@ -4,9 +4,6 @@ import './potentials.css'
 
 export default function Potentials(props) {
 
-  const changeStatus = (user) => {
-    console.log(user)
-  }
 
     return(
     <div>
@@ -18,9 +15,10 @@ export default function Potentials(props) {
 
       <div className="scrollable">
 
+
              {(props.pinsRemaining === 0) 
              ? props.matches.map((potentialMatch, i) => {
-               if(potentialMatch.connectedStatus <= 2){
+               if(potentialMatch && potentialMatch.connectedStatus <= 3){
                 return  <PotentialMatch key={i} potentialMatch={potentialMatch}  changeStatus={props.changeStatus}> </PotentialMatch>
                }
               }): 

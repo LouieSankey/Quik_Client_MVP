@@ -6,10 +6,11 @@ import ActiveConnection from './ActiveConnection/activeConnection'
 export default function Connects(props) {
 
     let connects = props.matches.filter(match => {
-            if (match.connectedStatus === 3) {
+            if (match && match.connectedStatus === 3) {
                 return match
         }
     })
+
 
     //moves the most recent connection to top of array for display purpose
     if (props.recentMatchId !== null) {
@@ -28,6 +29,8 @@ export default function Connects(props) {
         setSentMessages([])
     }
 
+ 
+
     return (
         <div className="container clearfix">
             <div className="people-list" id="people-list">
@@ -43,7 +46,7 @@ export default function Connects(props) {
                             className={i === isSelectedItem ? "selectedItem clearfix connection-profile" : "clearfix connection-profile"}
                             onClick={() => onClick(connect, i)}>
                             <ConnectionProfile
-                                connect={connect}>
+                                connect={connect} >
                             </ConnectionProfile>
                         </li>
                     })}
@@ -54,6 +57,9 @@ export default function Connects(props) {
             connect={connects[isSelectedItem]} 
             sentMessages={sentMessages}
             setSentMessages={setSentMessages}
+            user={props.user}
+            connects={connects}
+           
             ></ActiveConnection>
         </div>
     )

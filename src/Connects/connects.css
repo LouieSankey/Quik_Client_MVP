@@ -206,6 +206,12 @@
         border-radius: 10px;
     }
     
+    .reveal-date {
+        float: right;
+        font-size: 15px;
+        width: 200px;
+    }
+    
     .reveal-button:hover {
         background: rgb(24, 24, 163);
     }

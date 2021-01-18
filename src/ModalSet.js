@@ -19,18 +19,16 @@ export default function ModalSet(props) {
     }
   }, []);
 
-
-
-
-
-
   return (
     <div>
-         <h2 className="date-location">Congrats!!</h2>
-         <p>You've created a potential date at:</p>
+     <p className="created-date-header">Congrats!</p>
+
+         <p className="created-date-header">You've created a potential date for:</p>
       <h2 className="date-location">{props.activeLocation.name}</h2>
       on {date}!
-      <p>Make sure to set any remaining pins to start viewing potential matches!</p>
+
+      <p>You can use this pin again once it expires!</p>
+      <p>Make sure to set any remaining pins to view your potential matches!</p>
     </div>
   )
 

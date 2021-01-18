@@ -31,6 +31,21 @@ const APIService = {
           })
       },
 
+      getPinsForUser(user_id) {
+        return fetch(`${config.API_ENDPOINT}/pins_route/user_id/${user_id}`, {
+          method: 'GET'
+          }).then(res => {
+              if (!res.ok)
+                return res.json().then(e => Promise.reject(e))
+              return res.json()
+            }).catch(err => {
+              console.log(err)
+            })
+        },
+        // patchRequestStatus(){
+
+        // }
+
       getMatchesByLocationDateId(params) {
 
         return fetch(`${config.API_ENDPOINT}/pins_route/matches/${params.location_date_id}`, {
@@ -49,6 +64,77 @@ const APIService = {
             })
         },
 
+        getMessages(room_id){
+          
+          return fetch(`${config.API_ENDPOINT}/chat_route/room_id/${room_id}`, {
+            method: 'GET'
+            }).then(res => {
+                if (!res.ok)
+                  return res.json().then(e => Promise.reject(e))
+                return res.json()
+              }).catch(err => {
+                console.log(err)
+              })
+        },
+
+        getConnections(params) {
+
+          console.log("user id", params)
+
+          return fetch(`${config.API_ENDPOINT}/pins_route/connections`, {
+            method: 'POST',
+            headers: {
+              'content-type': 'application/json'
+            },
+            body: JSON.stringify(params),
+            }).then(res => {
+                if (!res.ok)
+                  return res.json().then(e => Promise.reject(e))
+                return res.json()
+    
+              }).catch(err => {
+                console.log(err)
+              })
+          },
+
+      sendLike(params) {
+
+          return fetch(`${config.API_ENDPOINT}/pins_route/matches/${params.location_date_id}`, {
+            method: 'PATCH',
+            headers: {
+              'content-type': 'application/json'
+            },
+            body: JSON.stringify(params),
+            }).then(res => {
+                if (!res.ok)
+                  return res.json().then(e => Promise.reject(e))
+                return []
+    
+              }).catch(err => {
+                console.log(err)
+              })
+          },
+
+
+      requestDate(params) {
+
+        return fetch(`${config.API_ENDPOINT}/pins_route/matches/request/${params.location_date_id}`, {
+          method: 'PATCH',
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(params),
+          }).then(res => {
+              if (!res.ok)
+                return res.json().then(e => Promise.reject(e))
+              return []
+  
+            }).catch(err => {
+              console.log(err)
+            })
+        },
+    
+
     pushPin(pin){
       return fetch(`${config.API_ENDPOINT}/pins_route/pin/`, {
         method: 'POST',
@@ -64,6 +150,8 @@ const APIService = {
         })
       
     },
+
+    
 
 createUser(user) {
     return fetch(`${config.API_ENDPOINT}/user_route`, {

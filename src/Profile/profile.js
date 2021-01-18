@@ -7,7 +7,7 @@ export default function Profile(props) {
 
     return(
         <>
-        <img className="profile-img" src={require('../Images/man-5.png')} alt=""/>
+        <img className="profile-img" src={require('../Images/blank-woman.jpeg')} alt=""/>
         <h2>John</h2>
         <h3>Age: 37</h3>
         <h4>Profile:</h4>

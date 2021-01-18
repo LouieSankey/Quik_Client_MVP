@@ -17,8 +17,9 @@ export default function Modal(props) {
 
   const onClick = () => {
     if (props.pinsRemaining > 0) {
-      props.pushPinnedLocation(props.activeLocation.id, dateValue);
-      props.usePin();
+      // props.usePin(props.pinsRemaining - 1);
+      props.pushPinnedLocation(props.activeLocation.id, dateValue, props.user);
+     
 
       //push pin to DB
       //create data body including 
@@ -35,11 +36,15 @@ export default function Modal(props) {
         user_name: props.user.username,
         age: "",
         bio: "",
-        photo_url: ""
+        photo_url: "",
+        likes_recieved: {},
+        likes_sent: {},
+        date_request_recieved: {},
+        date_request_sent: {},
+        date_reveal_text: `Your Date is for`
 
       }
 
-      console.log(JSON.stringify(pin))
 
       APIService.pushPin(pin)
 
@@ -89,7 +94,7 @@ export default function Modal(props) {
 
       {props.pinsRemaining > 0
         ? <><button onClick={() => { onClick() }} id="pinButton">PIN</button>
-          <p className="report-location">Bad Location?</p>
+          <p className="report-location">Flag Location</p>
           <img className="red-flag" src={require('./Images/redflag.png')} alt="" /></>
         : <p className="no-pins-view">No Pins remaining. You'll have to wait for one of your pins to expire!</p>}
 

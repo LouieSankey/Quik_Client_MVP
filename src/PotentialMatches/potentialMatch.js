@@ -11,48 +11,45 @@ function PotentialMatch(props) {
 
     const man1 = require('../Images/blank-woman.jpeg')
 
-    
-    let [indicatorText, setIndicatorText] = useState(props.potentialMatch.connectedStatus === 0 
-        ? "Send " + props.potentialMatch.name + " a Like" 
+
+    let [indicatorText, setIndicatorText] = useState(props.potentialMatch.connectedStatus === 0
+        ? "Send " + props.potentialMatch.name + " a Like"
         : props.potentialMatch.name + " Liked You")
 
-     let button = props.potentialMatch.connectedStatus === 0 ? likeButton : connectButton
+    let button = props.potentialMatch.connectedStatus === 0 ? likeButton : connectButton
 
-  const onClick = () => {
-      //here when you are liking or connecting, it will need to be sent to the db somehow
-      //solve: 3 array fields on the pins table
-      //1 to tracking who you liked - this will show as liked when you log back in
-      //1 to track people who liked you - this will render option to connect when you log back in
-      //1 to track people who you're connected with - this will also initiate a firebase chat
+    const onClick = () => {
+        props.changeStatus(props.potentialMatch, props)
+    }
 
-      
+    return (
+        <>
+            <div className="result-container">
+                <img className="result-box result-img" src={man1} alt=""></img>
+                <div className="result-box">
+                    <h3 className="potentialName">{props.potentialMatch.name}</h3>
+                    <h4 className="potentialAge"> Age: {props.potentialMatch.age}</h4>
+                    {props.potentialMatch.connectedStatus < 2 &&
+                        <div>
+                            <p>{indicatorText}</p>
+                            <img onClick={() => onClick()} className="like-button" src={button} alt=""></img>
+                        </div>
+                    }
+                    {
+                        props.potentialMatch.connectedStatus === 2 &&
+                        <p>{"You Sent " + props.potentialMatch.name
+                            + " a Like! If he chooses to connect, he'll show up in your 'Connects'"}</p>
+                    }
+                     {
+                        props.potentialMatch.connectedStatus === 3 &&
+                        <p>{"You are now connected with " + props.potentialMatch.name
+                            + " Check your 'Connects' tab to start a chat."}</p>
+                    }
 
-    props.changeStatus(props.potentialMatch, props)
-  }
-
-    return(
-    <>
-        <div className="result-container">
-            <img className="result-box result-img" src={man1} alt=""></img>
-            <div className="result-box">
-                <h3 className="potentialName">{props.potentialMatch.name}</h3>
-                <h4 className="potentialAge"> Age: {props.potentialMatch.age}</h4>
-                { props.potentialMatch.connectedStatus < 2 &&
-                    <div>
-                        <p>{indicatorText}</p>
-                        <img onClick={() => onClick()} className="like-button" src={button} alt=""></img>
-                    </div>
-                }
-                {
-                    props.potentialMatch.connectedStatus === 2 &&
-                    <p>{"You Sent " + props.potentialMatch.name
-                    + " a Like! If he chooses to connect, he'll show up in your 'Connects'"}</p>
-                }
-                            
+                </div>
             </div>
-        </div>
-    </>
-    
+        </>
+
     )
 }
 
