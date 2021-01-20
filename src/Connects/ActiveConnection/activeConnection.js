@@ -4,10 +4,11 @@ import './activeConnection.css'
 import io from 'socket.io-client'
 import apiService from '../../api-services'
 import DateFormat from 'dateformat'
+import config from '../../config'
 
 
 let socket;
-const ENDPOINT = 'http://localhost:8000'
+const ENDPOINT = config.API_ENDPOINT
 socket = io(ENDPOINT)
 
 const man1 = require('../../Images/female_avatar.jpg')
