@@ -10,6 +10,7 @@
     float: left;
     padding-right: 8px;
     height: 150px;
+    min-width: 159px;
 }
 
 .result-container {

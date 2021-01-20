@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react';
-import './loginModal.css'
-import ApiService from './api-services'
+import './login-modal.css'
+import ApiService from '../api-services'
 
 
 export default function SignupModal(props) {
@@ -12,56 +12,46 @@ export default function SignupModal(props) {
     let repeatPasswordInput = React.createRef();
 
     const [seeking, setSeeking] = useState(null)
-
     const [reenterEmail, setReenterEmail] = useState("hidden")
     const [reenterName, setReenterName] = useState("hidden")
     const [reenterPassword, setReenterPassword] = useState("hidden")
     const [makeSelection, setMakeSelection] = useState("hidden")
     const [enterBirthday, setEnterBirthday] = useState("hidden")
 
-
     const createAccount = () => {
-            //get data from all fields and create obj
-console.log(birthdayInput.current.value)
-
-            if(usernameInput.current.value.length < 3){
-                setReenterName("show")
-            }else if(!validateEmail(emailInput.current.value)){
-                setReenterEmail("show")
-            }else if(birthdayInput.current.value === ""){
-                setEnterBirthday("show")
-            }else if(passwordInput.current.value === "" || passwordInput.current.value !== repeatPasswordInput.current.value) {
-                setReenterPassword("show")
-            }else if(!seeking){
-                setMakeSelection("show")
+        if (usernameInput.current.value.length < 3) {
+            setReenterName("show")
+        } else if (!validateEmail(emailInput.current.value)) {
+            setReenterEmail("show")
+        } else if (birthdayInput.current.value === "") {
+            setEnterBirthday("show")
+        } else if (passwordInput.current.value === "" || passwordInput.current.value !== repeatPasswordInput.current.value) {
+            setReenterPassword("show")
+        } else if (!seeking) {
+            setMakeSelection("show")
+        }
+        else {
+            const data = {
+                "username": usernameInput.current.value,
+                "email": emailInput.current.value,
+                "birthday": birthdayInput.current.value,
+                "password": passwordInput.current.value,
+                "seeking": seeking
             }
-            else{
-                const data = {
-                    "username": usernameInput.current.value,
-                    "email": emailInput.current.value,
-                    "birthday": birthdayInput.current.value,
-                    "password": passwordInput.current.value,
-                    "seeking": seeking
-            }
-                ApiService.createUser(data).then(user => {
+            ApiService.createUser(data).then(user => {
+                props.setUser(user)
+                localStorage.setItem("quik_account_id", user.id)
+            })
 
-                     props.setUser(user)
+            props.setIsLoggedIn(true)
+        }
 
-                    localStorage.setItem("quik_account_id", user.id)
-                })
-                
-                //this will get called after posting created user data to db
-                props.setIsLoggedIn(true)
-            }
+    }
 
-            }
-
-            function validateEmail(email){
-                    var re = /\S+@\S+\.\S+/;
-                    return re.test(email);
-                }
-
-           
+    function validateEmail(email) {
+        var re = /\S+@\S+\.\S+/;
+        return re.test(email);
+    }
 
     return (
 
@@ -70,16 +60,13 @@ console.log(birthdayInput.current.value)
                 <button className="close-button" onClick={() => props.showModal(false)}>x</button>
                 <form className="signup-form" action="/">
                     <p className="signup-header" >Create a Free Account</p>
-
                     <div class="account-details">
                         <div><label>Email*<span className={reenterEmail}>Please enter a valid email</span></label><input ref={emailInput} type="text" name="name" required></input></div>
                         <div><label>First Name*<span className={reenterName}>Must be at least 3 letters</span></label><input ref={usernameInput} type="text" name="username" required></input></div>
-                        <div><label for="birthday">Birthday:<span className={enterBirthday}> Please Enter Your Birthday</span></label><input ref={birthdayInput} type="date" id="birthday" name="birthday"/></div>
+                        <div><label for="birthday">Birthday:<span className={enterBirthday}> Please Enter Your Birthday</span></label><input ref={birthdayInput} type="date" id="birthday" name="birthday" /></div>
                         <div><label>Password*<span className={reenterPassword}>Your passwords do not match</span></label><input ref={passwordInput} type="password" name="name" required></input></div>
                         <div><label>Repeat password*</label><input ref={repeatPasswordInput} type="password" name="name" required></input></div>
-                      
-                  </div>
-
+                    </div>
                     <div class="personal-details">
                         <div>
                         </div>
@@ -99,10 +86,9 @@ console.log(birthdayInput.current.value)
 
                 </form>
 
-                <button className="create-account-button"  href="/" onClick={createAccount}>Create Account</button>
+                <button className="create-account-button" href="/" onClick={createAccount}>Create Account</button>
 
-
-                <p className="toggle-signin">Already have an Account? <span onClick={()=> props.signup(false)} className="signin-link">Log In</span></p>
+                <p className="toggle-signin">Already have an Account? <span onClick={() => props.signup(false)} className="signin-link">Log In</span></p>
             </div>
         </div>
     )

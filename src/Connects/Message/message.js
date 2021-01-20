@@ -7,23 +7,15 @@ export default function Message(props) {
 
 
     return (
-
         <>
-
             {props.message.username === props.user.id &&
 
                 <li className="clearfix">
                     <div className="message-data align-right">
-
-                        <span className="message-data-time">00:00 AM, Today</span> &nbsp; &nbsp;
-
-                    {/* <span className="message-data-name">You</span> <i className="fa fa-circle me"></i> */}
-
+                    <span className="message-data-time">00:00 AM, Today</span> &nbsp; &nbsp;
                     </div>
-                    <img className="profile-image-chat float-right" src={require('../../Images/blank-woman.jpeg')} alt="" />
-
+                    <img className="profile-image-chat float-right" src={require('../../Images/male-avatar.png')} alt="" />
                     <div className="message other-message float-right">
-
                         {props.message.msg} </div>
                 </li>
 
@@ -32,21 +24,13 @@ export default function Message(props) {
             {props.message.username === props.activeUser.user_id &&
                 <li className="clearfix">
                     <div className="message-data">
-
-                        {/* <span className="message-data-name"><i className="fa fa-circle online"></i> {props.activeUser.name}</span> */}
                         <span className="message-data-time">00:00 AM, Today</span>
-
                     </div>
-
                     <img className="connection-image-chat" src={props.activeUser.profileImage} alt="" />
-
                     <div className="message my-message">
                         {props.message.msg}
-
                     </div>
                 </li>
-
-
             }
 
 
@@ -59,8 +43,8 @@ export default function Message(props) {
                     <div className="message-system my-message-system">
 
                         {props.message.msg.includes(props.user.username) ?
-                        props.message.msg.replace(props.user.username + " has", "you've")
-                        : props.message.msg }
+                            props.message.msg.replace(props.user.username + " has", "You've")
+                            : props.message.msg}
 
                     </div>
                 </li>

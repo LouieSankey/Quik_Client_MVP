@@ -1,3 +1,23 @@
 .clearfix {
     list-style: none;
 }
+
+.date-reveal-text {
+    float: right;
+}
+
+.blue-text {
+    color: indigo;
+    font-size: 18px;
+}
+
+.blue-text-small {
+    color: indigo;
+}
+
+.date-reveal-header {
+    margin-bottom: 4px;
+    padding-bottom: 4px;
+    margin-top: 0px;
+    padding-top: 0px;
+}

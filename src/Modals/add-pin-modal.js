@@ -1,31 +1,19 @@
 import React, { Component } from 'react';
 import DatePicker from 'react-date-picker';
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
-import L from 'leaflet';
-import './modal.css'
-import APIService from './api-services'
+import './add-pin-modal.css'
+import APIService from '../api-services'
 import DateFormat from 'dateformat'
 
-let HeartPin = L.icon({
-  iconUrl: require('./Images/heartpin4.png'),
-  iconSize: [24, 24],
-});
 
-export default function Modal(props) {
+export default function AddPinModal(props) {
 
   const [dateValue, onChange] = React.useState(new Date());
 
-  const onClick = () => {
+  const createNewPin = () => {
+
     if (props.pinsRemaining > 0) {
-      // props.usePin(props.pinsRemaining - 1);
-      props.pushPinnedLocation(props.activeLocation.id, dateValue, props.user);
-     
-
-      //push pin to DB
-      //create data body including 
-      //location_date_id, pin_date, location_id, user_id, seeking, user_name, age, bio, photo_url
-
       const date = DateFormat(dateValue, "mm-d-yyyy");
+      props.pushPinnedLocation(props.activeLocation.id, date, props.user);
 
       const pin = {
         location_date_id: date + "-" + props.activeLocation.id,
@@ -41,13 +29,12 @@ export default function Modal(props) {
         likes_sent: {},
         date_request_recieved: {},
         date_request_sent: {},
-        date_reveal_text: `Your Date is for`
+        date_location: props.activeLocation.name,
+        date_location_category: props.activeLocation.categories[0].name
 
       }
 
-
       APIService.pushPin(pin)
-
       props.closeModal()
     }
 
@@ -65,7 +52,6 @@ export default function Modal(props) {
       <h2 className="date-location">{props.activeLocation.name}</h2>
       <h2 className="date-address">{props.activeLocation.categories[0].name
         + (props.activeLocation.location.address ? " - " + props.activeLocation.location.address : "")}</h2>
-
       <div class="stars">
         <h2 className="stars-label">Trending:</h2>
         <form className="trending-stars-form" action="">
@@ -93,12 +79,10 @@ export default function Modal(props) {
       <br></br>
 
       {props.pinsRemaining > 0
-        ? <><button onClick={() => { onClick() }} id="pinButton">PIN</button>
+        ? <><button onClick={() => { createNewPin() }} id="pinButton">PIN</button>
           <p className="report-location">Flag Location</p>
-          <img className="red-flag" src={require('./Images/redflag.png')} alt="" /></>
+          <img className="red-flag" src={require('../Images/redflag.png')} alt="" /></>
         : <p className="no-pins-view">No Pins remaining. You'll have to wait for one of your pins to expire!</p>}
-
-
     </div>
   )
 
