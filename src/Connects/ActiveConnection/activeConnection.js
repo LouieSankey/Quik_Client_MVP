@@ -29,16 +29,21 @@ export default function ActiveConnection(props) {
   const user_ids = [selectedUser.user_id, props.user.id].sort()
   const room_id = user_ids[0] + "-" + user_ids[1] + "-" + selectedUser.location_date_id
   const messageBoxBottom = useRef(null)
+  const messageBox = useRef(null)
 
+  const [scroll, setScroll] = useState(0)
 
   const onMessageChange = (event) => {
     setCurrentMessage(event.target.value)
   }
+
   const scrollToBottom = () => {
     if (props.sentMessages.length > 0) {
-      messageBoxBottom.current.scrollIntoView({ behavior: "auto" })
+      messageBox.current.scrollTop = scroll + 5000
+      setScroll(scroll => scroll + 5000)
     }
   }
+
   useEffect(scrollToBottom, [props.sentMessages]);
 
   useEffect(() => {
@@ -99,6 +104,7 @@ export default function ActiveConnection(props) {
   }
 
   const requestDate = () => {
+
     const msg = {
       "room_id": room_id,
       "username": 'Quik',
@@ -138,7 +144,8 @@ export default function ActiveConnection(props) {
       case 1:
         return <button className="reveal-button" onClick={requestDate}>Reveal Date!</button>
       case 2:
-        return <button className="reveal-button" onClick={requestDate}>Requested!</button>
+
+        return <button className="reveal-button no-click" onClick={requestDate}>Requested!</button>
       case 3:
         return selectedUser.date_location ? <div className="date-reveal-text" >
           <p>Your date is for: </p>
@@ -165,13 +172,13 @@ export default function ActiveConnection(props) {
         </div>
         <i className="fa fa-star"></i>
       </div>
-      <div className="chat-history">
+      <div className="chat-history" ref={messageBox}>
         <ul className="chat-message-list">
           {props.sentMessages.map((message, i) => {
             return <Message key={i} activeUser={selectedUser} user={props.user} message={message.msgInfo}> </Message>
           })}
         </ul>
-        <div ref={messageBoxBottom} />
+        <div  />
       </div>
       <div className="chat-message clearfix">
         <textarea name="message-to-send" id="message-to-send" value={currentMessage} onChange={onMessageChange} placeholder="Type your message" rows="3"></textarea>

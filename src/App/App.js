@@ -64,7 +64,7 @@ export default function App(props) {
         Number(id)
       ).then(_user => {
         setUser(_user)
-        getConnections(_user)
+        // getConnections(_user)
         getPins(_user)
       }).catch(err => {
         console.log("error", err)
@@ -73,20 +73,21 @@ export default function App(props) {
   }, []);
 
 
-  const getConnections = (_user) => {
-    const params = { 'user_id': _user.id }
-    APIService.getConnections(params).then(connects => {
+  // const getConnections = (_user) => {
+  //   const params = { 'user_id': _user.id }
+  //   APIService.getConnections(params).then(connects => {
 
-      return connects.map(connect => {
-        connect.profileImage = man1
-        connect.connectedStatus = 3
-        connect.name = connect.user_name
-        return connect
-      })
-    }).then((dbConnects) => {
-      setMatches(dbConnects);
-    })
-  }
+  //     return connects.map(connect => {
+  //       connect.profileImage = man1
+  //       connect.connectedStatus = 3
+  //       connect.name = connect.user_name
+  //       return connect
+  //     })
+
+  //   }).then((dbConnects) => {
+  //     setMatches(dbConnects);
+  //   })
+  // }
 
   const getPins = (_user) => {
 

@@ -39,7 +39,7 @@ export default function Connects(props) {
                 <ul className="connection-list">
                     {uniqueConnects.map((connect, i) => {
                         return <li
-                            key={i}
+                            key={connect.id}
                             className={i === isSelectedItem ? "selectedItem clearfix connection-profile" : "clearfix connection-profile"}
                             onClick={() => onClick(connect, i)}>
                             <ConnectionProfile

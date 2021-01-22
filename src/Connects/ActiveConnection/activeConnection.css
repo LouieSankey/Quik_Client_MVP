@@ -6,6 +6,10 @@
     float: right;
 }
 
+.no-click {
+    pointer-events: none;
+}
+
 .blue-text {
     color: indigo;
     font-size: 18px;

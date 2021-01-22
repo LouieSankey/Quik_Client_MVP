@@ -192,9 +192,12 @@
     }
     
     .reveal-button {
+        position: absolute;
+        right: 8px;
+        margin-top: 40px;
         font-size: 12px;
         width: 140px;
-        margin-top: 50px;
+        /* margin-top: 50px; */
         float: right;
         color: white;
         padding: 10px;
@@ -264,7 +267,6 @@
             white-space: nowrap; */
         }
         .connection-list {
-            width: 100%;
             overflow: auto;
             white-space: nowrap;
             height: unset;

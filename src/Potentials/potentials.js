@@ -16,7 +16,7 @@ export default function Potentials(props) {
         <p>Anyone who pins one of the same locations on the same day will show up below.</p>
       </div>
       <div className="scrollable">
-        {(props.pinsRemaining === 0)
+        {(props.pinsRemaining <= 0)
           ? uniqueMatches.map((potentialMatch, i) => {
             if (potentialMatch && potentialMatch.connectedStatus <= 3) {
               return <PotentialMatch key={i} potentialMatch={potentialMatch} changeStatus={props.changeStatus}> </PotentialMatch>

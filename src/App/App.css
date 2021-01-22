@@ -152,7 +152,7 @@ p {
     cursor: pointer;
 }
 
-::placeholder {
+ ::placeholder {
     /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: rgba(211, 211, 211, 0.5);
     opacity: 1;
@@ -400,13 +400,6 @@ input[type=radio]:checked+label:after {
 }
 
 @media (max-width: 700px) {
-    .map {
-        height: calc(100vh - 100px);
-        /* position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 100%; */
-    }
     .column-1 {
         float: left;
         width: 100%;
@@ -434,5 +427,15 @@ input[type=radio]:checked+label:after {
     }
     h2 {
         font-size: 16px;
+    }
+}
+
+@media (max-width: 420px) {
+    .map {
+        height: calc(100vh - 210px);
+        /* position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%; */
     }
 }
