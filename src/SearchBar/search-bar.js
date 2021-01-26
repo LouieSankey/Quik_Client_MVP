@@ -16,7 +16,7 @@ export default function SearchBar(props) {
 
     const changeLocation = () => {
         props.onLocationChange(location)
-        history.push('/quik')
+        history.push('/')
     };
 
     const handleEnterPressed = (event) => {
