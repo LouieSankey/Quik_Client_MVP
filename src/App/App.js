@@ -15,7 +15,7 @@ import DateFormat from 'dateformat'
 
 
 const man1 = require('../Images/female_avatar.jpg')
-
+const man2 = require('../Images/man-3.png')
 
 const exampleMatches = [
   {
@@ -23,9 +23,8 @@ const exampleMatches = [
     name: "Lisa from Quik",
     age: "34",
     connectedStatus: 1,
-    profileImage: man1
+    profileImage: man2
   }
-
 ]
 
 export default function App(props) {
@@ -49,7 +48,7 @@ export default function App(props) {
 
   const [pinnedLocationIds, setpinnedLocationIds] = useState(new Set([]));
   const [locationDateMap, setLocationDateMap] = useState(new Map())
-  const [pinsRemaining, setPinsRemaining] = useState(4)
+  const [pinsRemaining, setPinsRemaining] = useState(3)
   const [mapCenter, setMapCenter] = React.useState([37.77400521704548, -122.43092782795432]);
   const [mapZoom, setMapZoom] = React.useState(13);
   const [matches, setMatches] = useState([])
@@ -62,7 +61,7 @@ export default function App(props) {
   useEffect(() => {
 
     if (isLoggedIn && user !== {}) {
- 
+      console.log("should get login")
       APIService.getAccountById(
         Number(id)
       ).then(_user => {
@@ -70,14 +69,10 @@ export default function App(props) {
         getPins(_user)
       }).catch(err => {
         console.log("error", err)
-      
-          setIsLoggedIn(false)
-        
-       
+        setIsLoggedIn(false)
       })
     }
   }, []);
-
 
 
   const getPins = (_user) => {
