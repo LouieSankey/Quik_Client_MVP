@@ -25,3 +25,10 @@ export default function PinSetModal(props) {
   )
 
 }
+
+PinSetModal.defaultProps = {
+  activeLocation: {
+    name: ""
+  },
+  locationDateMap: []
+}

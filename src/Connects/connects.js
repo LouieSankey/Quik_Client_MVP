@@ -5,6 +5,7 @@ import ActiveConnection from './ActiveConnection/activeConnection'
 
 export default function Connects(props) {
 
+
     let connects = props.matches.filter(match => {
             if (match && match.connectedStatus === 3) {
                 return match
@@ -15,10 +16,6 @@ export default function Connects(props) {
     .filter((object,index) => index === connects
     .findIndex(obj => JSON.stringify(obj) === JSON.stringify(object)));
 
-    if (props.recentMatchId !== null) {
-        uniqueConnects.unshift(uniqueConnects
-            .splice(uniqueConnects.findIndex(item => item.id === props.recentMatchId), 1)[0])
-    }
     
     const [isSelectedItem, setSelectedItem] = useState(0)
     const [sentMessages, setSentMessages] = useState([])
@@ -37,7 +34,7 @@ export default function Connects(props) {
                 }
                 <h3 className="chat-selection-header">The day and location you matched will be kept secret until you mutually agree to reveal it.</h3>
                 <ul className="connection-list">
-                    {uniqueConnects.map((connect, i) => {
+                    {uniqueConnects[0] && uniqueConnects.map((connect, i) => {
                         return <li
                             key={connect.id}
                             className={i === isSelectedItem ? "selectedItem clearfix connection-profile" : "clearfix connection-profile"}

@@ -8,7 +8,7 @@ export default function Message(props) {
 
     return (
         <>
-            {props.message.username === props.user.id &&
+            {props.message.username === props.user.id && <>
 
                 <li className="clearfix">
                     <div className="message-data align-right">
@@ -19,6 +19,16 @@ export default function Message(props) {
                         {props.message.msg} </div>
                 </li>
 
+<li className="clearfix">
+<div className="message-data">
+    <span className="message-data-time">00:00 AM, Today</span>
+</div>
+<img className="connection-image-chat" src={props.activeUser.profileImage} alt="" />
+<div className="message my-message">
+    Not bad, how are you?
+</div>
+</li>
+</>
 
             }
             {props.message.username === props.activeUser.user_id &&
@@ -53,4 +63,17 @@ export default function Message(props) {
 
     )
 
+}
+
+Message.defaultProps ={
+    message: {
+        username: "",
+    },
+    user: {
+        id: "",
+        user_id: ""
+    },
+    activeUser:{
+        user_id: ""
+    }
 }

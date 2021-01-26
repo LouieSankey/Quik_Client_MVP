@@ -16,3 +16,9 @@ export default function Profile(props) {
         </>
     )
 }
+
+Profile.defaultProps = {
+    user: {
+        username: ""
+    }
+}

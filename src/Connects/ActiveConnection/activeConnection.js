@@ -168,7 +168,7 @@ export default function ActiveConnection(props) {
         {renderButton(dateRequestStatus)}
         <div className="chat-about">
           <div className="chat-with">{selectedUser.name}</div>
-          <div className="chat-num-messages">{selectedUser.age}</div>
+          <div className="chat-num-messages">Age: {selectedUser.age}</div>
         </div>
         <i className="fa fa-star"></i>
       </div>
@@ -189,4 +189,8 @@ export default function ActiveConnection(props) {
     </div>
   )
 
+}
+
+ActiveConnection.defaultProps = {
+  sentMessages: []
 }

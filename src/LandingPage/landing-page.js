@@ -19,7 +19,7 @@ export default function Landing(props) {
             }
             <div className="navbar no-click flex">
                 <h1 className="logo-text header-column-1"><img className="logo-image" src={heartpin} alt=""></img><span className="logo-main-text">uik</span> </h1>
-                <input className="location-search header-column-2" type="text" value="Your City"></input>
+                <input className="location-search header-column-2" type="text" defaultValue="Your City"></input>
                 <button type="submit" className="searchButton" >
                     <i className="fa fa-search"></i>
                 </button>

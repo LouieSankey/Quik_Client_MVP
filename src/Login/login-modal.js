@@ -37,11 +37,11 @@ export default function LoginModal(props) {
     return (
 
         <div className="signin-modal">
-            <div class="main-block">
+            <div className="main-block">
                 <button className="close-button" onClick={() => props.showModal(false)}>x</button>
                 <form className="signup-form" action="/">
                     <p className="signup-header" >Log In</p>
-                    <div class="account-details">
+                    <div className="account-details">
                         <div><label>Email*<span className="show">{passwordError}</span></label><input ref={emailInput} type="text" name="name" required></input></div>
                         <div><label>Password* </label><input ref={passwordInput} type="password" name="name" required></input></div>
                     </div>

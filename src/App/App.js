@@ -16,6 +16,8 @@ import DateFormat from 'dateformat'
 
 const man1 = require('../Images/female_avatar.jpg')
 const man2 = require('../Images/man-3.png')
+const man3 = require('../Images/man-4.png')
+const man4 = require('../Images/man-1.png')
 
 const exampleMatches = [
   {
@@ -25,6 +27,7 @@ const exampleMatches = [
     connectedStatus: 1,
     profileImage: man2
   }
+
 ]
 
 export default function App(props) {
@@ -48,18 +51,20 @@ export default function App(props) {
 
   const [pinnedLocationIds, setpinnedLocationIds] = useState(new Set([]));
   const [locationDateMap, setLocationDateMap] = useState(new Map())
-  const [pinsRemaining, setPinsRemaining] = useState(3)
+  const [pinsRemaining, setPinsRemaining] = useState(4)
   const [mapCenter, setMapCenter] = React.useState([37.77400521704548, -122.43092782795432]);
   const [mapZoom, setMapZoom] = React.useState(13);
   const [matches, setMatches] = useState([])
   const [recentMatchId, setRecentMatchId] = useState(null)
   const id = localStorage.getItem('quik_account_id')
+
   const [isLoggedIn, setIsLoggedIn] = useState(Number(id) ? true : false)
   const [user, setUser] = useState({})
 
   useEffect(() => {
 
     if (isLoggedIn && user !== {}) {
+ 
       APIService.getAccountById(
         Number(id)
       ).then(_user => {
@@ -68,6 +73,10 @@ export default function App(props) {
         getPins(_user)
       }).catch(err => {
         console.log("error", err)
+      
+          setIsLoggedIn(false)
+        
+       
       })
     }
   }, []);
@@ -227,7 +236,7 @@ export default function App(props) {
           <NavBar></NavBar>
 
           <Switch>
-            <Route exact path="/quik">
+            <Route exact path="/">
               <Pins
                 mapRef={mapRef}
                 user={user}
@@ -266,7 +275,7 @@ export default function App(props) {
           </Switch>
         </>
         :
-        <Route exact path="/quik">
+        <Route exact path="/">
           <Landing setUser={setUser} setIsLoggedIn={setIsLoggedIn} ></Landing>
         </Route>
       }

@@ -29,7 +29,7 @@ export default function SearchBar(props) {
 
     const logout = () => {
         localStorage.setItem("quik_account_id", null)
-        history.push('/quik')
+        history.push('/')
     }
 
 

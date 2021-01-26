@@ -52,19 +52,19 @@ export default function AddPinModal(props) {
       <h2 className="date-location">{props.activeLocation.name}</h2>
       <h2 className="date-address">{props.activeLocation.categories[0].name
         + (props.activeLocation.location.address ? " - " + props.activeLocation.location.address : "")}</h2>
-      <div class="stars">
+      <div className="stars">
         <h2 className="stars-label">Trending:</h2>
         <form className="trending-stars-form" action="">
-          <input class="star star-1" id="star-1" type="radio" checked={props.activeLocation.trendingScore === 1} name="star" />
-          <label class="star star-1" for="star-1"></label>
-          <input class="star star-2" id="star-2" type="radio" checked={props.activeLocation.trendingScore === 2} name="star" />
-          <label class="star star-2" for="star-2"></label>
-          <input class="star star-3" id="star-3" type="radio" checked={props.activeLocation.trendingScore === 3} name="star" />
-          <label class="star star-3" for="star-3"></label>
-          <input class="star star-4" id="star-4" type="radio" checked={props.activeLocation.trendingScore === 4} name="star" />
-          <label class="star star-4" for="star-4"></label>
-          <input class="star star-5" id="star-5" type="radio" checked={props.activeLocation.trendingScore === 5} name="star" />
-          <label class="star star-5" for="star-6"></label>
+          <input className="star star-1" id="star-1" type="radio" defaultChecked={props.activeLocation.trendingScore === 1} name="star" />
+          <label className="star star-1" htmlFor="star-1"></label>
+          <input className="star star-2" id="star-2" type="radio" defaultChecked={props.activeLocation.trendingScore === 2} name="star" />
+          <label className="star star-2" htmlFor="star-2"></label>
+          <input className="star star-3" id="star-3" type="radio" defaultChecked={props.activeLocation.trendingScore === 3} name="star" />
+          <label className="star star-3" htmlFor="star-3"></label>
+          <input className="star star-4" id="star-4" type="radio" defaultChecked={props.activeLocation.trendingScore === 4} name="star" />
+          <label className="star star-4" htmlFor="star-4"></label>
+          <input className="star star-5" id="star-5" type="radio" defaultChecked={props.activeLocation.trendingScore === 5} name="star" />
+          <label className="star star-5" htmlFor="star-6"></label>
         </form>
       </div>
 
@@ -86,4 +86,15 @@ export default function AddPinModal(props) {
     </div>
   )
 
+}
+
+AddPinModal.defaultProps = {
+  activeLocation: {
+    name: "",
+    location: {address: ""},
+    categories: [
+      {name: ""},
+      {address: ""}
+    ]
+  }
 }

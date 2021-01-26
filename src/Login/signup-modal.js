@@ -56,28 +56,28 @@ export default function SignupModal(props) {
     return (
 
         <div className="login-modal">
-            <div class="main-block">
+            <div className="main-block">
                 <button className="close-button" onClick={() => props.showModal(false)}>x</button>
                 <form className="signup-form" action="/">
                     <p className="signup-header" >Create a Free Account</p>
-                    <div class="account-details">
+                    <div className="account-details">
                         <div><label>Email*<span className={reenterEmail}>Please enter a valid email</span></label><input ref={emailInput} type="text" name="name" required></input></div>
                         <div><label>First Name*<span className={reenterName}>Must be at least 3 letters</span></label><input ref={usernameInput} type="text" name="username" required></input></div>
-                        <div><label for="birthday">Birthday:<span className={enterBirthday}> Please Enter Your Birthday</span></label><input ref={birthdayInput} type="date" id="birthday" name="birthday" /></div>
+                        <div><label htmlFor="birthday">Birthday:<span className={enterBirthday}> Please Enter Your Birthday</span></label><input ref={birthdayInput} type="date" id="birthday" name="birthday" /></div>
                         <div><label>Password*<span className={reenterPassword}>Your passwords do not match</span></label><input ref={passwordInput} type="password" name="name" required></input></div>
                         <div><label>Repeat password*</label><input ref={repeatPasswordInput} type="password" name="name" required></input></div>
                     </div>
-                    <div class="personal-details">
+                    <div className="personal-details">
                         <div>
                         </div>
                         <div>
                             <div>
                                 <label>Seeking* <span className={makeSelection}>Please make a selection</span></label>
-                                <div class="gender">
+                                <div className="gender">
                                     <input onChange={(e) => setSeeking(e.target.value)} type="radio" value="men" id="male" name="gender" required />
-                                    <label for="male" class="radio">Men</label>
+                                    <label htmlFor="male" className="radio">Men</label>
                                     <input onChange={(e) => setSeeking(e.target.value)} type="radio" value="women" id="female" name="gender" required />
-                                    <label for="female" class="radio">Women</label>
+                                    <label htmlFor="female" className="radio">Women</label>
                                 </div>
                             </div>
 

@@ -4,6 +4,7 @@
 
 .potentialAge {
     margin-top: 0px;
+    margin-bottom: 30px;
 }
 
 .result-img {
@@ -24,4 +25,21 @@
 .result-box {
     /* display: inline; */
     float: left;
+    width: 100%;
+}
+
+.profile-link {
+    color: rgb(104, 149, 209);
+    margin-top: -53px;
+    font-size: 12px;
+    float: right;
+    margin-right: 6px;
+}
+
+.like-button {
+    margin-top: 6px;
+    height: 34px;
+    width: auto;
+    margin-right: 20px;
+    cursor: pointer;
 }

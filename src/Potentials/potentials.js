@@ -29,3 +29,7 @@ export default function Potentials(props) {
 
   )
 }
+
+Potentials.defaultProps = {
+  matches: []
+}

@@ -141,8 +141,11 @@ function Pins(props) {
   };
 
   useEffect(() => {
-    onViewportChanged();
-  }, props.pinsRemaining === 0)
+    if(props.pinsRemaining === 0) {
+      onViewportChanged();
+    }
+   
+  }, props.pinsRemaining)
 
   useEffect(() => {
     onViewportChanged();
@@ -242,6 +245,10 @@ function Pins(props) {
 
   </>
   );
+}
+
+Pins.defaultProps = {
+  matches: []
 }
 
 export default withRouter(Pins)
