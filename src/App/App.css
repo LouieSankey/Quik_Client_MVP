@@ -23,13 +23,6 @@ p {
     width: 40px;
 }
 
-.logo-main-text {
-    margin: 10;
-    font-size: 32px;
-    color: #fff;
-    z-index: 2;
-}
-
 .react-date-picker__inputGroup__input {
     color: black;
 }
@@ -91,15 +84,6 @@ p {
     padding-bottom: 15px;
 }
 
-.logo-image {
-    position: relative;
-    margin-top: -8px;
-    transform: rotate(-5deg);
-    width: 44px;
-    height: 44px;
-    float: left;
-}
-
 .bars {
     width: 18px;
     height: 18px;
@@ -107,13 +91,6 @@ p {
 
 .potential-matches-header {
     margin-bottom: 6px;
-}
-
-.logo-text {
-    /* font-family: 'Gloria Hallelujah', cursive; */
-    font-family: 'Archivo Narrow', sans-serif;
-    margin-left: 14px;
-    margin-top: 15px;
 }
 
 .float-left {
@@ -339,10 +316,6 @@ input[type="time"]::-webkit-inner-spin-button {
     }
     .potentials {
         display: inline;
-    }
-    .logo-main-text,
-    .my-quik {
-        display: none;
     }
     h2 {
         font-size: 16px;

@@ -99,8 +99,30 @@
     display: block;
 }
 
+.logo-image {
+    position: relative;
+    margin-top: -40px;
+    margin-left: 10px;
+    height: 86px;
+    float: left;
+}
+
+.logo-main-text {
+    margin: 10;
+    font-size: 32px;
+    color: #fff;
+    z-index: 2;
+}
+
 @media (max-width: 700px) {
     .dropdown {
         margin-right: 0px;
+    }
+    .logo-image {
+        position: relative;
+        margin-top: -34px;
+        margin-left: 0px;
+        height: 70px;
+        float: left;
     }
 }

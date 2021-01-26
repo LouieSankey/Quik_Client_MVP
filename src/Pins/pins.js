@@ -69,7 +69,7 @@ const categories = {
 const categoryIcon = {
   "Mini Golf": MiniGolf,
   "Aquarium": Aquarium,
-  "Science Museum": Invisible,
+  // "Science Museum": Invisible,
   "Frozen Yogurt Shop": FroYo,
   "Roller Rink": Skate,
   "Beach Bar": BeachBar,
@@ -141,11 +141,12 @@ function Pins(props) {
   };
 
   useEffect(() => {
-    if(props.pinsRemaining === 0) {
+    setTimeout(() => {
       onViewportChanged();
-    }
-   
-  }, props.pinsRemaining)
+    }, 1000);
+    
+
+  }, [props.pinsRemaining]);
 
   useEffect(() => {
     onViewportChanged();

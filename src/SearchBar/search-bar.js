@@ -2,7 +2,7 @@ import React, { Component, useState, } from 'react';
 import { useHistory } from 'react-router-dom';
 import './search-bar.css'
 
-const heartpin = require('../Images/qheart2.png')
+const heartpin = require('../Images/quik-logo-no-bottom.png')
 
 export default function SearchBar(props) {
 
@@ -35,7 +35,7 @@ export default function SearchBar(props) {
 
     return (
         <div className="navbar flex">
-            <h1 className="logo-text header-column-1"><img className="logo-image" src={heartpin} alt=""></img><span className="logo-main-text">uik</span> </h1>
+            <h1 className="logo-text header-column-1"><img className="logo-image" src={heartpin} alt=""></img> </h1>
             <input className="location-search header-column-2" onKeyPress={handleEnterPressed} onChange={handleSearchInput} type="text" placeholder="Town, city, location..."></input>
             <button type="submit" className="searchButton" onClick={changeLocation}>
                 <i className="fa fa-search"></i>

@@ -48,7 +48,7 @@ export default function App(props) {
 
   const [pinnedLocationIds, setpinnedLocationIds] = useState(new Set([]));
   const [locationDateMap, setLocationDateMap] = useState(new Map())
-  const [pinsRemaining, setPinsRemaining] = useState(3)
+  const [pinsRemaining, setPinsRemaining] = useState(5)
   const [mapCenter, setMapCenter] = React.useState([37.77400521704548, -122.43092782795432]);
   const [mapZoom, setMapZoom] = React.useState(13);
   const [matches, setMatches] = useState([])
@@ -61,7 +61,7 @@ export default function App(props) {
   useEffect(() => {
 
     if (isLoggedIn && user !== {}) {
-      console.log("should get login")
+
       APIService.getAccountById(
         Number(id)
       ).then(_user => {
@@ -81,20 +81,24 @@ export default function App(props) {
     APIService.getPinsForUser(_user.id).then(pins => {
 
       if (pinsRemaining === pins.length) {
-        setPinsRemaining(0)
+       
         pins.map(pin => {
           const date = DateFormat(pin.pinDate, "mm-d-yyyy");
           setpinnedLocationIds(new Set(pinnedLocationIds.add(pin.location_id)))
           setLocationDateMap(new Map(locationDateMap.set(pin.location_id, date)))
         })
         getMatchesFromDB(_user)
-
+          setPinsRemaining(0)
+        
       }
       else {
+      
         pins.map(pin => {
           const date = DateFormat(pin.pinDate, "mm-d-yyyy");
           pushPinnedLocation(pin.location_id, date, _user)
         })
+
+        setPinsRemaining(pinsRemaining - pins.length)
       }
     })
 
@@ -104,9 +108,11 @@ export default function App(props) {
 
     setLocationDateMap(new Map(locationDateMap.set(location, date)))
     setpinnedLocationIds(new Set(pinnedLocationIds.add(location)))
-    setPinsRemaining((prevState) => prevState - 1)
+    
 
     if (pinsRemaining <= 1) {
+  
+
       getMatchesFromDB(_user)
     }
   }

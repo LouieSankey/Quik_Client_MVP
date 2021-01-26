@@ -33,6 +33,7 @@ export default function AddPinModal(props) {
         date_location_category: props.activeLocation.categories[0].name
 
       }
+      props.usePin(props.pinsRemaining - 1)
 
       APIService.pushPin(pin)
       props.closeModal()
