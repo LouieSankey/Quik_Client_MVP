@@ -23,7 +23,7 @@ const exampleMatches = [
     name: "Lisa from Quik",
     age: "34",
     connectedStatus: 1,
-    profileImage: man2
+    profileImage: man1
   }
 
 ]
