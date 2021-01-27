@@ -61,6 +61,12 @@
     pointer-events: none;
 }
 
+.demo {
+    color: darkblue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 @media (max-width: 700px) {
     .quik-img {
         position: relative;

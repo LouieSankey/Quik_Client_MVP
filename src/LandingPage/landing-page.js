@@ -2,16 +2,21 @@ import React, { useState } from 'react';
 import './landing-page.css'
 import LoginModal from '../Login/signup-modal'
 import SignupModal from '../Login/login-modal'
+import  DemoModal from '../Login/demo-modal'
 
 const heartpin = require('../Images/qheart2.png')
 
 export default function Landing(props) {
 
     const [showModal, setShowModal] = useState(false)
+    const [showDemo, setShowDemo] = useState(false)
     const [signup, setSignup] = useState(true)
 
     return (
         <>
+
+            {showDemo && <DemoModal showDemo={setShowDemo}></DemoModal>}
+
             {showModal && (signup ?
                 <LoginModal showModal={setShowModal} signup={setSignup} setUser={props.setUser} setIsLoggedIn={props.setIsLoggedIn}></LoginModal>
                 :
@@ -48,6 +53,7 @@ export default function Landing(props) {
 
                 <img className="quik-img" src={require('../Images/iphonelanding.png')} alt=""></img>
                 <button className="signup-button" onClick={() => setShowModal(true)}>Log In / Sign Up</button>
+                <p className="demo" onClick={() => setShowDemo(true)} >Testing Instructions</p>
             </main>
         </>
 
