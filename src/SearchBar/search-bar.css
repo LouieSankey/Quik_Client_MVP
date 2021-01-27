@@ -120,9 +120,11 @@
     }
     .logo-image {
         position: relative;
-        margin-top: -34px;
-        margin-left: 0px;
-        height: 70px;
+        margin-top: -24px;
+        margin-left: -4px;
+        height: 60px;
         float: left;
+        margin-right: 4px;
+        width: 80px;
     }
 }

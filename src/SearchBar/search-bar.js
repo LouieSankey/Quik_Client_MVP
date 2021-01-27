@@ -2,7 +2,7 @@ import React, { Component, useState, } from 'react';
 import { useHistory } from 'react-router-dom';
 import './search-bar.css'
 
-const heartpin = require('../Images/quik-logo-no-bottom.png')
+const heartpin = require('../Images/quik-web-logo.png')
 
 export default function SearchBar(props) {
 
