@@ -68,7 +68,7 @@ export default function App(props) {
         setUser(_user)
         getPins(_user)
       }).catch(err => {
-        console.log("error", err)
+        console.error("error", err)
         setIsLoggedIn(false)
       })
     }
@@ -81,18 +81,18 @@ export default function App(props) {
     APIService.getPinsForUser(_user.id).then(pins => {
 
       if (pinsRemaining === pins.length) {
-       
+
         pins.map(pin => {
           const date = DateFormat(pin.pinDate, "mm-d-yyyy");
           setpinnedLocationIds(new Set(pinnedLocationIds.add(pin.location_id)))
           setLocationDateMap(new Map(locationDateMap.set(pin.location_id, date)))
         })
         getMatchesFromDB(_user)
-          setPinsRemaining(0)
-        
+        setPinsRemaining(0)
+
       }
       else {
-      
+
         pins.map(pin => {
           const date = DateFormat(pin.pinDate, "mm-d-yyyy");
           pushPinnedLocation(pin.location_id, date, _user)
@@ -108,11 +108,9 @@ export default function App(props) {
 
     setLocationDateMap(new Map(locationDateMap.set(location, date)))
     setpinnedLocationIds(new Set(pinnedLocationIds.add(location)))
-    
+
 
     if (pinsRemaining <= 1) {
-  
-
       getMatchesFromDB(_user)
     }
   }
@@ -183,7 +181,7 @@ export default function App(props) {
       newStatus = 2
       APIService.sendLike(params)
     }
-    
+
     else if (potentialMatch.connectedStatus === 1) {
       newStatus = 3
       APIService.sendLike(params)

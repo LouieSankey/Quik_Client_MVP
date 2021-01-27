@@ -24,7 +24,7 @@ const APIService = {
         return res.json().then(e => Promise.reject(e))
       return res.json()
     }).catch(err => {
-      console.log(err)
+      console.error(err)
     })
   },
 
@@ -36,7 +36,7 @@ const APIService = {
         return res.json().then(e => Promise.reject(e))
       return res.json()
     }).catch(err => {
-      console.log(err)
+      console.error(err)
     })
   },
 
@@ -52,7 +52,7 @@ const APIService = {
         return res.json().then(e => Promise.reject(e))
       return res.json()
     }).catch(err => {
-      console.log(err)
+      console.error(err)
     })
   },
 
@@ -64,7 +64,7 @@ const APIService = {
         return res.json().then(e => Promise.reject(e))
       return res.json()
     }).catch(err => {
-      console.log(err)
+      console.error(err)
     })
   },
 
@@ -80,7 +80,7 @@ const APIService = {
         return res.json().then(e => Promise.reject(e))
       return res.json()
     }).catch(err => {
-      console.log(err)
+      console.error(err)
     })
   },
 
@@ -97,7 +97,7 @@ const APIService = {
       return []
 
     }).catch(err => {
-      console.log(err)
+      console.error(err)
     })
   },
 
@@ -114,7 +114,7 @@ const APIService = {
         return res.json().then(e => Promise.reject(e))
       return []
     }).catch(err => {
-      console.log(err)
+      console.error(err)
     })
   },
 
