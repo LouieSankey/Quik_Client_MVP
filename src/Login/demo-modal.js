@@ -20,7 +20,7 @@ export default function DemoModal(props) {
             <br></br>
             <p>Inside, you'll want to SET YOUR FIVE PINS for each user, making sure that at least one pin is overlapping.</p>
             <br></br>
-            <p>You'll have to refresh for connection status updates between your two users, but once connected you can chat and request/reveal your shared location date in real time.</p>
+            <p>You'll have to refresh for connection status updates between your two users, but once connected you can chat and request/reveal your shared date location in real time.</p>
 
             <br></br>
             <p>Enjoy!</p>
