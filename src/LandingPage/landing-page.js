@@ -4,7 +4,6 @@ import LoginModal from '../Login/signup-modal'
 import SignupModal from '../Login/login-modal'
 import  DemoModal from '../Login/demo-modal'
 
-const heartpin = require('../Images/qheart2.png')
 
 export default function Landing(props) {
 
@@ -23,7 +22,7 @@ export default function Landing(props) {
                 <SignupModal showModal={setShowModal} signup={setSignup} setUser={props.setUser} setIsLoggedIn={props.setIsLoggedIn}></SignupModal>)
             }
             <div className="navbar no-click flex">
-                <h1 className="logo-text header-column-1"><img className="logo-image" src={heartpin} alt=""></img><span className="logo-main-text">uik</span> </h1>
+                <h1 className="logo-text header-column-1"><img className="logo-image" src={require('../Images/quik-web-logo.png')} alt=""></img></h1>
                 <input className="location-search header-column-2" type="text" defaultValue="Your City"></input>
                 <button type="submit" className="searchButton" >
                     <i className="fa fa-search"></i>
