@@ -26,8 +26,8 @@ TESTING NOTE: Quik is a real time connections app with a live chat feature. If y
 ![quik-chat-2](https://user-images.githubusercontent.com/8163492/107867976-d5d82880-6e34-11eb-8da4-b0f0d5dd7a4b.png)
 
 
-Code made available for job search purposes only.
-All Rights Reserved! 
+
+All Rights Reserved.
 
 
 
