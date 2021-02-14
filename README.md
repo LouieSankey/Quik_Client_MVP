@@ -22,8 +22,7 @@ Just the opposite, with Quik you pin locations you're already interested in goin
 To add to the mystery (and also provide a layer of security), you won't know the exact location you matched with anyone until you've had a chance to chat and mutually agree to reveal it.
 
 TESTING NOTE: Quik is a real time connections app with a live chat feature. If you'd like to test the chat and connections you must log in with two users on two separte browsers (ie, Chrome and Safari) as Quik currently makes use of local storage in its authentication.
-
-![quik-2](https://user-images.githubusercontent.com/8163492/105930726-e4ce7680-5ffe-11eb-846f-1f44ac094462.png)
+![quik-chat-2](https://user-images.githubusercontent.com/8163492/107867954-8e519c80-6e34-11eb-8194-0457f4544948.png)
 
 Code made available for job search purposes only.
 All Rights Reserved! 
