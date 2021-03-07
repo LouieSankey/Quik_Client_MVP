@@ -77,7 +77,7 @@ export default function App(props) {
       console.log("not logged in", isLoggedIn, user !== {})
 
     }
-  }, [isLoggedIn]);
+  }, []);
 
 
   const getPins = (_user) => {
