@@ -53,6 +53,7 @@ export default function App(props) {
   const [mapZoom, setMapZoom] = React.useState(13);
   const [matches, setMatches] = useState([])
   const [recentMatchId, setRecentMatchId] = useState(null)
+
   const id = localStorage.getItem('quik_account_id')
 
   const [isLoggedIn, setIsLoggedIn] = useState(Number(id) ? true : false)
@@ -62,6 +63,7 @@ export default function App(props) {
 
     if (isLoggedIn && user !== {}) {
 
+      console.log("logged in", isLoggedIn, user !== {})
       APIService.getAccountById(
         Number(id)
       ).then(_user => {
@@ -71,8 +73,11 @@ export default function App(props) {
         console.error("error", err)
         setIsLoggedIn(false)
       })
+    }else{
+      console.log("not logged in", isLoggedIn, user !== {})
+
     }
-  }, []);
+  }, [isLoggedIn]);
 
 
   const getPins = (_user) => {
