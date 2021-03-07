@@ -23,10 +23,10 @@ To add to the mystery (and also provide a layer of security), you won't know the
 
 TESTING NOTE: Quik is a real time connections app with a live chat feature. If you'd like to test the chat and connections you must log in with two users on two separte browsers (ie, Chrome and Safari) as Quik currently makes use of local storage in its authentication.
 
-![quik-2](https://user-images.githubusercontent.com/8163492/105930726-e4ce7680-5ffe-11eb-846f-1f44ac094462.png)
+![quik-chat-2](https://user-images.githubusercontent.com/8163492/107868030-6adb2180-6e35-11eb-867b-6ca087987b38.png)
 
-Code made available for job search purposes only.
-All Rights Reserved! 
+
+All Rights Reserved.
 
 
 
