@@ -16,7 +16,7 @@ export default function AddPinModal(props) {
       props.pushPinnedLocation(props.activeLocation.id, date, props.user);
 
 
-      let dateForDB = dateValue.setDate(dateValue.getDate() - 1)
+      let dateForDB = dateValue.setDate(dateValue.getDate() + 1)
       let isoDate = new Date(dateForDB).toISOString()
 
       const pin = {
