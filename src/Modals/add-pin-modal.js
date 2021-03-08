@@ -17,10 +17,11 @@ export default function AddPinModal(props) {
 
 
       let dateForDB = dateValue.setDate(dateValue.getDate() - 1)
+      let isoDate = new Date(dateForDB).toISOString()
 
       const pin = {
         location_date_id: date + "-" + props.activeLocation.id,
-        pin_date: dateForDB,
+        pin_date: isoDate,
         location_id: props.activeLocation.id,
         user_id: props.user.id,
         seeking: "",
