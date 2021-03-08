@@ -10,8 +10,12 @@ export default function PinSetModal(props) {
     for (const [key, value] of props.locationDateMap) {
       if (key === props.activeLocation.id && dateStr !== value) {
         const dateString = value + ""
+
+
         var result = new Date(value);
         setDate(result.setDate(result.getDate() + 1))
+
+        
         setDateStr(dateString.substr(0, 15))
       }
     }
