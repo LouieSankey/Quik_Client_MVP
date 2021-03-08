@@ -40,10 +40,11 @@ export default function SignupModal(props) {
             }
             ApiService.createUser(data).then(user => {
                 props.setUser(user)
+                props.setIsLoggedIn(true)
                 localStorage.setItem("quik_account_id", user.id)
             })
 
-            props.setIsLoggedIn(true)
+           
         }
 
     }

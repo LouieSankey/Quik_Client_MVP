@@ -4,6 +4,10 @@ div.stars {
     display: inline-block;
 }
 
+.red_font {
+    color: red;
+}
+
 input.star {
     display: none;
 }

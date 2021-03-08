@@ -62,11 +62,13 @@ export default function App(props) {
   useEffect(() => {
 
     if (isLoggedIn && user !== {}) {
+      let user_id = user.id ? user.id : id
 
-      console.log("logged in", isLoggedIn, user !== {})
+      console.log("logged in", isLoggedIn, user )
       APIService.getAccountById(
-        Number(id)
+       user_id
       ).then(_user => {
+      
         setUser(_user)
         getPins(_user)
       }).catch(err => {
@@ -77,7 +79,7 @@ export default function App(props) {
       console.log("not logged in", isLoggedIn, user !== {})
 
     }
-  }, []);
+  }, [isLoggedIn]);
 
 
   const getPins = (_user) => {
@@ -85,10 +87,13 @@ export default function App(props) {
     setMatches(exampleMatches)
     APIService.getPinsForUser(_user.id).then(pins => {
 
+  
+
       if (pinsRemaining === pins.length) {
 
         pins.map(pin => {
-          const date = DateFormat(pin.pinDate, "mm-d-yyyy");
+          console.log("pindate", pin.pinDate)
+          const date = DateFormat(pin.pin_date, "mm-d-yyyy");
           setpinnedLocationIds(new Set(pinnedLocationIds.add(pin.location_id)))
           setLocationDateMap(new Map(locationDateMap.set(pin.location_id, date)))
         })
@@ -99,7 +104,8 @@ export default function App(props) {
       else {
 
         pins.map(pin => {
-          const date = DateFormat(pin.pinDate, "mm-d-yyyy");
+          console.log("pindate", pin)
+          const date = DateFormat(pin.pin_date, "mm-d-yyyy");
           pushPinnedLocation(pin.location_id, date, _user)
         })
 

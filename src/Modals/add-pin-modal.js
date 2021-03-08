@@ -17,7 +17,7 @@ export default function AddPinModal(props) {
 
       const pin = {
         location_date_id: date + "-" + props.activeLocation.id,
-        pin_date: dateValue,
+        pin_date: date,
         location_id: props.activeLocation.id,
         user_id: props.user.id,
         seeking: "",
