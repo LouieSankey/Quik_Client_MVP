@@ -94,8 +94,11 @@ export default function App(props) {
         pins.map(pin => {
           console.log("pindate", pin)
 
+
+          pin.pin_date.setDate(pin.pin_date.getDate() + 1)
+
           const date = DateFormat(pin.pin_date, "mm-d-yyyy");
-          date.setDate(date.getDate() + 1)
+        
           setpinnedLocationIds(new Set(pinnedLocationIds.add(pin.location_id)))
 
           setLocationDateMap(new Map(locationDateMap.set(pin.location_id, date)))
@@ -107,10 +110,10 @@ export default function App(props) {
       else {
 
         pins.map(pin => {
-          console.log("pindate", pin)
+          pin.pin_date.setDate(pin.pin_date.getDate() + 1)
 
           const date = DateFormat(pin.pin_date, "mm-d-yyyy");
-          date.setDate(date.getDate() + 1)
+        
           
 
           pushPinnedLocation(pin.location_id, date, _user)
