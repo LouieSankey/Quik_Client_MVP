@@ -15,9 +15,12 @@ export default function AddPinModal(props) {
       const date = DateFormat(dateValue, "mm-d-yyyy");
       props.pushPinnedLocation(props.activeLocation.id, date, props.user);
 
+
+      let dateForDB = dateValue.setDate(dateValue.getDate() - 1)
+
       const pin = {
         location_date_id: date + "-" + props.activeLocation.id,
-        pin_date: date,
+        pin_date: dateForDB,
         location_id: props.activeLocation.id,
         user_id: props.user.id,
         seeking: "",
