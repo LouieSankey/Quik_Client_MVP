@@ -35,16 +35,16 @@ export default function Landing(props) {
             <main className="splash-main">
                 <div className="splash-header">
                     <div className="header">
-                        <h1 >Quik puts the 'date' back in online dating.</h1>
+                        <h1 >Quik is Destination Based Dating for Explorers, Backpackers, and Newcomers to a City.</h1>
                         <br />
-                        <p>Quik let's you pin locations in your city or that you'd like to visit, then find potential matches with people who pinned the same location.</p>
+                        <p>Quik let's you pin popular locations that you'd like to visit, then find potential matches with people who pinned the same location.</p>
                         <br />
                         <ul className="landing-page-bullets">
-                            <li>                <p>Quik is Safe - Users will never know the exact location you matched until you mutually agreed to reveal it.</p>
+                            <li>                <p>Quik is Safe - Users will never know the exact location they matched until both parties chat and agree to reveal it.</p>
                             </li>
-                            <li>                 <p>Quik is Fun - pick your favorite locations and see who else shares the same interests.</p>
+                            <li>                 <p>Quik is Fun - Pick exciting destinations you'd like to visit and see who else shares the same interests.</p>
                             </li>
-                            <li>                 <p>Quik is Free! - With Quik you don't have to pay a fortune to find a date, get 5 reusable locations pins completely free!</p>
+                            <li>                 <p>Quik is Free! - With Quik you don't have to pay a fortune to find a date, get 5 reusable locations pins free!</p>
                             </li>
                         </ul>
                     </div>

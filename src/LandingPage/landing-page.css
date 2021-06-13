@@ -67,6 +67,12 @@
     cursor: pointer;
 }
 
+@media (min-width: 1200px) {
+    .quik-img {
+        height: 650px;
+    }
+}
+
 @media (max-width: 700px) {
     .quik-img {
         position: relative;
@@ -78,11 +84,13 @@
         margin-right: 10px;
         float: left;
     }
+
     .splash-main {
         float: left;
         margin-right: 40px;
         margin-left: 40px;
     }
+
     .splash-header {
         width: 100%;
         background-color: white;
@@ -90,6 +98,7 @@
         border-bottom-right-radius: 20px;
         border-bottom-left-radius: 20px;
     }
+
     .signup-button {
         position: relative;
         margin-top: 40px;
