@@ -37,7 +37,7 @@ export default function Landing(props) {
 
                 <div className="splash-header">
                     <div className="header">
-                        <h1 >Quik is Destination Based Dating for Explorers, Travellers, and Newcomers to a City.</h1>
+                        <h1 >Quik is Destination Based Dating for Explorers, Travelers, and Newcomers to a City.</h1>
                         <br />
                         <p>Quik lets you pin popular locations that you'd like to visit, then find potential matches with people who pinned the same location.</p>
                         <br />
