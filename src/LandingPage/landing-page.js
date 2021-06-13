@@ -32,7 +32,9 @@ export default function Landing(props) {
                 </div>
 
             </div>
+
             <main className="splash-main">
+
                 <div className="splash-header">
                     <div className="header">
                         <h1 >Quik is Destination Based Dating for Explorers, Backpackers, and Newcomers to a City.</h1>
@@ -51,6 +53,7 @@ export default function Landing(props) {
                 </div>
 
                 <img className="quik-img" src={require('../Images/iphonelanding.png')} alt=""></img>
+
                 <button className="signup-button" onClick={() => setShowModal(true)}>Log In / Sign Up</button>
                 <p className="demo" onClick={() => setShowDemo(true)} >Testing Instructions</p>
             </main>
