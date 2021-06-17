@@ -67,8 +67,9 @@ export default function Landing(props) {
               <li>
                 {" "}
                 <p>
-                  Quik is Safe - Users will never know the exact location they
-                  matched until both parties chat and agree to reveal it.
+                  Quik is Safe - You'll never know the exact location you
+                  matched with anyone until you've had a chance to chat and
+                  mutually agree to reveal it.
                 </p>
               </li>
               <li>
