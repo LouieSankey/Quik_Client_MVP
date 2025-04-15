@@ -5,7 +5,7 @@ Quik - Dating and Connections.
 
 Client built with React, JSX, Leaflet Maps & The Foursquare API.
 
-Live App: https://quik.vercel.app/
+Live App: https://quikmeetups.com?ref=resume
 
 Server Repo: https://github.com/LouieSankey/quik_server
 
