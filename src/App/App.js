@@ -31,7 +31,7 @@ export default function App(props) {
 
   const mapRef = useRef()
 
-  Geocode.setApiKey("AIzaSyASSi9FH6fRM1t7traviF7fqokhJgmsbEY")
+  Geocode.setApiKey(process.env.GEOCODE_API_KEY)
   Geocode.setLanguage("en");
 
   function onLocationChange(location) {
